@@ -1,0 +1,17 @@
+-Implementar os controles do player 2 e consertar os nomes dos controles do player 1 - implementado
+
+-Implementar camera se mover pelo cenario - implementado
+	foi implementado o comportamento da camera mais sem usar o cinemachine
+
+-Implementar o efeito do hit na defesa
+
+-Terminar de implementar o sistema de empurar e ser empurado quando acerta o golpe
+
+-Implementar otmizações tirando redundancias de todo o codigo 
+
+-implementar a interface
+
+-Consetar bugs
+
+-Verificar a possibilidade de implementar frames positivos e negativos ou implementar golpes 
+que podem ser cancelados

@@ -1,0 +1,63 @@
+-Especial
+	Cada barra de especial é igual a 100 pontos de especial
+	Cada personagem pode tem até 3 barra de especial
+	
+-Tipos de colisores
+	fisicCollider	Colisor de fisica
+	hitCollider		Colisor de area de dano
+	hurtCollider	Colisor que detecta contato com hitCollider
+	DefenceCollider	Colisor que evita dano
+	
+-Tipos de ataques
+	*alto	
+	*medio	
+	*baixo	
+	*banda
+	*overhead
+		*ataques pulando funcionam como overhead - só podem ser defendidos em pé
+	
+-Tipos de defesa e vulnerabilidades
+	defesa em pé 
+		vulneravel a golpes baixos
+		forte contra golpes altos, medios e overheads
+	defesa agachado
+		vulneravel a overheads
+		forte contra golpes altos, medios e baixo
+
+-Stum
+	A barra de stum tem x pontos e quando chegar a 0 o personagem vai ficar atordoado, 
+	cada ataque gera 'dano' a barra de stum e ela se recupera aos poucos depois de um 
+	tempo
+
+-Pow
+	Estourar a barra vai fazer o personagem receber mais bonus e menos penalidades 
+	de seus ataques alem de causar um pouco de dano extra
+
+-Combo
+	Sempre que um personagem causar dano a outro ele vai coloca-lo em estado de hit 
+	stum, sempre que houver um acerto em um oponente em estado de hit stum vai haver
+	um combo
+
+	-Proteção contra combo infinito
+
+-Penalidade de combo longo
+	Combos longos vão reduzir significativamente o dano causado nos proximos ataques
+	
+-Reset
+	Gastar uma barra de especial para resetar a penalidade de dano redusido em combo, 
+	só vai ser possivel fazer isso uma vez durante o combo
+
+-Counter
+	Acertar o oponente enquanto ele executa alumas ações vai fazer com que o proximo 
+	ataque do personagem tenha bonus igual ao do pow ativo
+
+-Counter Punish
+	Acertar o oponente durante o recover de um golpe que não pegou dá os bonus de 
+	Counter alem de um adicional de força de stum
+
+-Guard Reset
+	Em estado de hit stun ou defence stun o jogador pode sacrificar uma barra para
+	sair desse estado 
+	(não sei se no hit stun é legal)
+	(o jogador pode fazer isso e pressionar para tras para sair do stum indo para tras)
+	(para fazer o guard reset é só estourar barra enquanto estiver no defence stun)

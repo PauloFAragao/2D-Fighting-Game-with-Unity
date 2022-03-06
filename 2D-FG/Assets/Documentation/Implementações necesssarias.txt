@@ -1,0 +1,53 @@
+Implementar mecanica de defesa Cross up
+	Cross up: ataque de salto que parte da frente, mas atinge o oponente nas costas. 
+	Costuma confundir os jogadores, já que o bloqueio também precisa ser invertido.
+
+Implementar camera que abre zoon ou se move
+	(provavelmente a camera vai ter q ir abrindo zoom e se movendo pro lado que der zoon)
+Ou Implementar camera que se meche de acordo com a posição dos personagens (pode até ter função zoom)
+	Nesse caso vai ser necessario ter 4 pontos de trigger na camera (ou em Match Controller) e quando
+	o personagem colidir com eles ir movendo a camera de acordo com as regras de movimento.
+
+Implementar efeitos de hit
+	hit normal - implementado
+	hit na defesa
+
+Implementar empurrar o oponente quando o ataque pegar - parcialmente implementado
+	e se não der pra empurrar por que o oponente já está no canto, empurrar quem bateu para tras
+
+Implementar altura dos ataques - implementado
+	Quando um personagem atingir o outro o personagem atingido deve realizar a animação de 
+	sofrendo dano de acordo com a altura do ataque, e a defesa deve reagir aos ataques 
+	sofrendo dano dos ataques que são pontos fracos e segurando o dano dos outros ataques
+
+Implementar pause no atacante quando o ataque acertar e animações no primeiro frame das animações 
+de sofrendo dano
+	-o alvo tem que executar primeiro a animação de ataque recebido (os 2 pausam e quem sofreu
+	o ataque faz uma animação de frame parado se mechendo).
+	
+Implementar combo - Implementado
+	combo é quando o jogador acerta um golpe no oponente que está em animação de hit stun
+		
+Cancelar animação (para combo) só deve ser possivel que ouver acerto - só se for necessario
+
+Verificar a possibilidade de colocar todas as animações a 60 quadros por segundo - implementado
+
+Futuramente será necessario programar melhor todas as reações de ataques sofridos
+	-implementar espeficicamente cada reação para cada ataque sofrido
+
+
+
+Na classe AttackControl
+	os ataques precisam ter dano setado
+	os ataques precisam ter valor de stum setado
+	implementar tudo relacionado ao player 2
+
+Na classe Damageable
+	é necessario implementar as outras situações do personagem sofrendo dano
+		pulando
+		agachado
+		dano trocado
+	é necessario implementar que o dano sofrido seja computado
+	é necessario implementar tudo relacionado a defesa
+
+

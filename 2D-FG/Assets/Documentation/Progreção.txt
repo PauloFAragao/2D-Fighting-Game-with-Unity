@@ -1,0 +1,132 @@
+Projeto jogo de luta 2D
+Verção: 0.6
+-Implementado controle do player2
+-Implementadas alterações nos nomes dos botões do player 1
+-Comportamento da camera implementado sem usar o cinemachine
+
+Verção: 0.5
+-Implementadas mais alterações para que seja possivel a criação de novos personagens
+-Implementada alteração na logica da corrida e do dash para tras
+-Implementada alteração de order in layer nos agarões (sprite render)
+-Implementada alteração na logica de como são chamadas as verificações dos golpes de comando
+-Golpes de comando implementados
+	-Power Wave e projetil
+	-Round Wave e efeito
+	-Burn Knuckle (fraco e forte)
+	-Crack Shoot (fraco e forte - tem um defeito ao se colidir com oponente)
+	-Power Dunk (fraco e forte - As reações ao sofrer esse ataque não foram implementadas)
+	-Rising Trackle (forte e fraco - As reações ao sofrer esse ataque não foram implementadas)
+	-Power Geyser
+	-Buster Wolf
+
+-Outras ações implementadas
+	-Landing For Recover
+	
+
+Verção: 0.4
+-Implementado sofrer todos os danos possiveis enquanto pula
+-Iseridas colisões de fim de cenario no alcance da camera
+-Implementadas alterações para facilitar a criação de novos personagens
+-Animações e ações implementadas e funcionais:
+	-Crouched Weak Punch
+	-Crouched Strong Punch
+	-Crouched Weak Kick
+	-Crouched Strong Kick
+	-Jumping Weak Punch
+	-Jumping Strong Punch
+	-Jumping Weak Kick
+	-Jumping Strong Kick
+	-Knock Down (todos)
+	-Getting Up
+	-Special Attack (todos)
+	-Jumping Special Attack
+	-Hard Knock Down (todos)
+	-Active pow
+	-Stum
+	-Taking Damage Jumping (todos)
+	-Taking Damage Crouched
+	-Grab and Throw Forward
+	-Grabbed and Thrown Forward (Todos - tem um efeito ao acertar o chão)
+	-Grab and Throw For Backward
+	-Grabbed and Thrown For Backward
+
+-Correção de bugs
+	-Corrigido um bug que afetava todos os ataques durante o pulo fazendo com que o ataque não funcionasse caso o acerto 
+	ocorresse um instante antes do personagem aterrissar
+	-Corrigido um bug no corner que fazia o personagem ficar agarrado
+	-Corrigido bug visual que fazia algumas animações parassarem para idle quando o personagem tem que executar a ação de stum
+
+
+Verção: 0.3
+-Aspecto da camera alterado para 15:8 e size para 6.5
+-Feitas alterações na fisica do personagem almentando a gravidade e algumas velocidades
+-Adicionado um efeito de poeira nas animações de pulo de de dash back
+-Implementadas melhorias na colisão dos personagens durante o pulo (o sistema ainda não está funcionando perfeitamente)
+-Toda a forma como as animações são chamdas pelo animator foi alterada agora as animações são chamadas diretamente por codigo
+-Todas as animações foram modificadas para rodar a 60 fps
+-Implementado o sistema de combo, o sistema conta a quantidade de hits no combo e o dano sofrido
+-Alterando a cadencia de frames para maior fluidez
+	animações prontas:
+		-Idle
+		-Walk
+		-Walk backwards
+		-Weak punch
+		-Crouching
+		-Crouched Idle
+		-Getting up from the Crouch
+		-All Back rolling
+		-All Front rolling
+		-All Jumps
+		-Weak kick
+		-Strong kick
+		-Weak punch
+		-Strong punch
+		-Close strong punch
+		-Close strong kick
+		-Back rolling (todos)
+		-Front rolling (todos)
+		-Run (todos)
+
+-Correção de bugs
+	-Corrigido o bug que não resetava a animação quando o personagem sofre dano no meio de uma animação de sofrer dano
+	-Corrigido um bug em dash back gerado pela alteração na cadencia da animação
+
+
+Verção: 0.2
+-Implementadas as ações de ataque basico
+-Implementadas as ações de sofrendo dano em situações especificas
+-Implementada detecção de acerto de golpes e reações
+-Parcialmente implementada a mecanica em que um ataque empurra o oponente
+-Implementado sistema em que o personagem sofre dano em 3 alturas diferentes (baixo, medio, alto) e outros tipos
+-Implementado efeito de acerto
+-Implementada adição de pontos de especial no acerto
+-Implementada mudança de layer dos personagens para fazer o personagem que acertou ficar na frente
+-Implementado golpes com mais de 1 hit adicionando mais um objeto de colisão
+-Feitas alterações na escala dos personagens e nas velocidades
+
+-Correção de bugs
+	-Corrigido o bug na ação de rolamento, o personagem não colide mais com o outro durante essa ação
+	-Corrigido o bug que o personagem empurrava de mais o outro personagem
+	-Corrigido um bug por falta de ligações no animator (animações de golpe e animação de virar para o outro lado com pulos)
+	-Corrigido um bug na animação de corrida
+	-Corrigido um bug na animação de dash back
+	-Corrigido o bug que fazia uma animação de ataque se repetir quando outro ataque era realisado
+
+
+Verção: 0.1
+-Criação do projeto em 01/02/2022
+-Implemetação das mecanicas de movimentação pre-existentes do projeto para implementação de mecanicas de movimentação
+-Implementadas as colisões de hurtbox (colisões de onde sofrer dano)
+-Configuração das animações e configuração do animator
+	-idle
+	-crounch
+	-walk
+	-backwards walk
+	-jump(normal e diagonais)
+	-run
+	-dash back
+	-Change side(em pé e agachado)
+	-Defending
+	-Frontal Rolling e Back Rolling
+	-Recover(sem animator)
+	-Stun(sem animator)

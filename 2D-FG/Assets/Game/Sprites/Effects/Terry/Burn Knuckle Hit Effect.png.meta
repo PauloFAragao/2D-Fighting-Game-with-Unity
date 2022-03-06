@@ -1,0 +1,782 @@
+fileFormatVersion: 2
+guid: e101e1edb3faf664ba8d57b6d2069a5c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 413
+        width: 39
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b53e184fd1e9b154aab6a329951e5d8b
+      internalID: -412563543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 406
+        width: 54
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e17f5e7efb7072d4187b2a9417d639f0
+      internalID: -1100121115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_2
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 397
+        width: 71
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e34e1ab184a97459e814089ed0234b
+      internalID: -1934964227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_3
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 388
+        width: 90
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531cbed660bed5643aff112a96ec76de
+      internalID: -2137146463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_4
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 384
+        width: 102
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4974808bcc3af1546ad487b1bfb09e29
+      internalID: 287235917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_5
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 383
+        width: 110
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0b3c8df58e4f8c42b8558f83e0006bd
+      internalID: 719092335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_6
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 382
+        width: 112
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5b9944b3e263547b9cb2ef422b1360
+      internalID: 1696343968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_7
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 378
+        width: 115
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699594b7ec12c5c46b24f081e33f5f80
+      internalID: 792600656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_8
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 377
+        width: 119
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d90c188ef41244841a45bf47aa1087a1
+      internalID: 272336057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_9
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 373
+        width: 120
+        height: 65
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b027f3ec2459c2144a055c7be569c6f2
+      internalID: -274186057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_10
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 372
+        width: 122
+        height: 66
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a27507c6b8b7964ab889dc10c975394
+      internalID: -1889749667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_11
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 372
+        width: 123
+        height: 66
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8606a8e17c17e478b6da052b492424
+      internalID: -1560490150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_12
+      rect:
+        serializedVersion: 2
+        x: 1417
+        y: 377
+        width: 124
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30fb7a242b4e42b4988d36304a1de034
+      internalID: 681851292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_13
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 380
+        width: 139
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee108d4897857c34b8a1212b5cdb5467
+      internalID: -1405896371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_14
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 380
+        width: 92
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 042d4a420fb64d24582ce56360acafa4
+      internalID: 1454132087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 255
+        width: 90
+        height: 98
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f757fe7a18136544e84d0dea6156a595
+      internalID: 1104526434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_16
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 225
+        width: 115
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9467e651a0640344a0fe96c5d2a234e
+      internalID: 1746980239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_17
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 181
+        width: 180
+        height: 171
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52182c399c6f24d4d89416eebda2c82b
+      internalID: 1584990746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_18
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 177
+        width: 232
+        height: 175
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbf25467b6641c1418ae94ef14253787
+      internalID: -1859473869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_19
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 155
+        width: 240
+        height: 197
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09e8da8976767bc4996d24614525b435
+      internalID: 786409726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_20
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 150
+        width: 251
+        height: 202
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1de916d800934f14883a1d4578fd49bf
+      internalID: -1571123014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_21
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 171
+        width: 222
+        height: 181
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86dd47a26ff917f409e95538e728bce4
+      internalID: -858899776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_22
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 202
+        width: 230
+        height: 150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ff98ed498896f442a3067a310d9e906
+      internalID: -728846222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 254
+        height: 135
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d04e52fb8241e843abfc6878c87b7c9
+      internalID: -2036238417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_24
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 4
+        width: 252
+        height: 131
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d929b4890e7bc946aa08f8d653bb3e7
+      internalID: 167385380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_25
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 6
+        width: 246
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5fc6019a232dee4fa1c064cf368342f
+      internalID: -296868984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_26
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 16
+        width: 247
+        height: 118
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7ace30ae6978d4fa159002e837c9f5
+      internalID: -1682109222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_27
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 67
+        width: 238
+        height: 67
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf009ca31413bc43ac88efbeba6f4e8
+      internalID: -605468917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_28
+      rect:
+        serializedVersion: 2
+        x: 1338
+        y: 73
+        width: 215
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80fe8c35784348c439f92f7a6cb77aa2
+      internalID: 1847409590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Burn Knuckle Hit Effect_29
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 84
+        width: 80
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c435a2a1af35b7042a518f5bc2f6b335
+      internalID: -782032144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Burn Knuckle Hit Effect_27: -605468917
+      Burn Knuckle Hit Effect_11: -1560490150
+      Burn Knuckle Hit Effect_6: 1696343968
+      Burn Knuckle Hit Effect_26: -1682109222
+      Burn Knuckle Hit Effect_14: 1454132087
+      Burn Knuckle Hit Effect_24: 167385380
+      Burn Knuckle Hit Effect_29: -782032144
+      Burn Knuckle Hit Effect_12: 681851292
+      Burn Knuckle Hit Effect_28: 1847409590
+      Burn Knuckle Hit Effect_25: -296868984
+      Burn Knuckle Hit Effect_19: 786409726
+      Burn Knuckle Hit Effect_4: 287235917
+      Burn Knuckle Hit Effect_5: 719092335
+      Burn Knuckle Hit Effect_8: 272336057
+      Burn Knuckle Hit Effect_13: -1405896371
+      Burn Knuckle Hit Effect_1: -1100121115
+      Burn Knuckle Hit Effect_22: -728846222
+      Burn Knuckle Hit Effect_17: 1584990746
+      Burn Knuckle Hit Effect_0: -412563543
+      Burn Knuckle Hit Effect_3: -2137146463
+      Burn Knuckle Hit Effect_2: -1934964227
+      Burn Knuckle Hit Effect_20: -1571123014
+      Burn Knuckle Hit Effect_16: 1746980239
+      Burn Knuckle Hit Effect_18: -1859473869
+      Burn Knuckle Hit Effect_23: -2036238417
+      Burn Knuckle Hit Effect_21: -858899776
+      Burn Knuckle Hit Effect_10: -1889749667
+      Burn Knuckle Hit Effect_9: -274186057
+      Burn Knuckle Hit Effect_15: 1104526434
+      Burn Knuckle Hit Effect_7: 792600656
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
