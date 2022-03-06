@@ -18,12 +18,12 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private MatchController mc;        //referencia ao MatchController
 
     private AttackControl oAC;                          //referencia ao objeto da classe AttackControl do oponente
-    private Transform oTrasnform;                       //referencia ao transforno do oponente
+    private Transform oTrasnform;                       //referencia ao transform do oponente
     private PlayerController oPC;                       //referencia ao objeto da classe PlayerController no oponente
     private Animator oAnim;                             //referencia ao animator do oponente
     private Damageable oDamageable;                     //referencia ao Damageable do oponente
 
-    public Transform dustEffectSpaw;                    //referencia ao ponto de spaw
+    public Transform dustEffectSpawn;                    //referencia ao ponto de spawn
 
     //prefabs
     public GameObject dustEffectPrefab;                 //prefab da poeria do pulo
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
     private bool canCancelAction;       //variavel para indicar que a ação atual pode ser cancelada por outra ação especifica
     
     //variaveis de estado do personagem
-    [SerializeField]private int action = 0;             //guarda a ação que o prersonagem está executando no momento
+    [SerializeField]private int action = 0;             //guarda a ação que o personagem está executando no momento
     
     private bool grounded = true;       //para verificar se o personagem está no chão
     public Transform groundCheck;       //transform do objeto que verificar se o personagem está ou não no chão
@@ -65,8 +65,8 @@ public class PlayerController : MonoBehaviour {
     private int powActiveTime;          //indica o momento que o pow foi ativo
 
     //variaveis de comando
-    private bool commandToChangeSide;   //indica que o personagem tem que mudar de lado assim que possivel
-    private bool stunCommand;           //indica que o personagem sofreu um stum e tem que mudar para a ação de stun assim q possivel
+    private bool commandToChangeSide;   //indica que o personagem tem que mudar de lado assim que possível
+    private bool stunCommand;           //indica que o personagem sofreu um stun e tem que mudar para a ação de stun assim q possível
     private bool jump;                  //sinaliza que a animação de preparação para o pulo já terminou
 
 
@@ -131,15 +131,15 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate()
 	{
-        //chama o metodo que vai verificar e processar as ações que são comuns a todos os personagens
+        //chama o método que vai verificar e processar as ações que são comuns a todos os personagens
         ProcessActions();
         
-        //chama o metodo que vai verificar e processar as ações especificas do personagem
+        //chama o método que vai verificar e processar as ações especificas do personagem
         characterController.ProcessActions();
         
     }
     
-    //metodo que vai verificar qual ação deve ser processada
+    //método que vai verificar qual ação deve ser processada
     private void ProcessActions()
     {
         switch (action)
@@ -324,14 +324,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai ajustar o lado que o personagem deve estar virado
+    //método que vai ajustar o lado que o personagem deve estar virado
     public void AjustRotation()
     {
         renderTrasnform.eulerAngles = new Vector3(0, 0, 0);
     }
     
 
-    //metodo que vai chamar os metodos de processamento dos botões de ação
+    //método que vai chamar os métodos de processamento dos botões de ação
     private void ActionButtons()
     {
 
@@ -341,32 +341,26 @@ public class PlayerController : MonoBehaviour {
         //verificando o comando de rolamento
         if (Rolling())
         {
-            //resetando
+            //resetando o estado de ataque
             attackControl.SetAttacking(false);
 
             return;
         }
 
         //verificando o comando de ataque especial comum
-        if (SpecialCommon())
-        {
-            //resetando
-            attackControl.SetAttacking(false);
-
-            return;
-        }
+        if (SpecialCommon()) return;
 
         //verificar o comando de pow
         if (ActivePow())
         {
-            //resetando
+            //resetando o estado de ataque
             attackControl.SetAttacking(false);
 
             return;
         }
     }
 
-    //metodo que vai resolver o comando para mudar de lado
+    //método que vai resolver o comando para mudar de lado
     private bool ChangeSide()
     {
         if (commandToChangeSide)//comando para virar para o outro lado
@@ -390,10 +384,10 @@ public class PlayerController : MonoBehaviour {
         else return false;
     }
 
-    //metodo que vai resolver o comando de stum
+    //método que vai resolver o comando de stun
     private bool ResolveStun()
     {
-        if (stunCommand)//comando para executar a ação de stum
+        if (stunCommand)//comando para executar a ação de stun
         {
             SetAction(200);
             anim.Play("Stun");
@@ -405,31 +399,31 @@ public class PlayerController : MonoBehaviour {
         else return false;
     }
 
-    //metodo que vai verificar o comando de rolamento
+    //método que vai verificar o comando de rolamento
     public bool Rolling()
     {
         //soco fraco + chute fraco
         if (ic.GetButtons(4) && ic.GetButtons(6) && CheckIfCanSwitchTo130or140())
         {
-            if ( (ic.GetButtons(0) && facingRight) || (ic.GetButtons(2) && !facingRight) )//botão para tras pressionado
+            if ( (ic.GetButtons(0) && facingRight) || (ic.GetButtons(2) && !facingRight) )//botão para trás pressionado
             {
-                SetAction(140);     //mudando a ação para rolamento para tras
+                SetAction(140);     //mudando a ação para rolamento para trás
                 anim.Play("BackRollingCommand");
             }
             else
             {
-                SetAction(130);     //mudando a ação para rolamento para tras
+                SetAction(130);     //mudando a ação para rolamento para trás
                 anim.Play("FrontRollingCommand");
             }
 
-            SetPlayerLayer(8);  //mudando a layer do personagem para passar por tras do outro personagem
+            SetPlayerLayer(8);  //mudando a layer do personagem para passar por trás do outro personagem
             return true;
         }
 
         return false;
     }
     
-    //metodo que vai verificar o comando de ataque especial comum
+    //método que vai verificar o comando de ataque especial comum
     public bool SpecialCommon()
     {
         //soco forte + chute forte
@@ -437,13 +431,21 @@ public class PlayerController : MonoBehaviour {
         {
             if(characterController.CheckIfCanSwitchTo450(action, canCancelAction))
             {
+                //o personagem está atacando
+                attackControl.SetAttacking(true);
+
                 SetAction(450);
                 anim.Play("Jumping Special Attack");
+
             }
             else if (characterController.CheckIfCanSwitchTo440(action, canCancelAction))
             {
+                //o personagem está atacando
+                attackControl.SetAttacking(true);
+
                 SetAction(440);
                 anim.Play("Special Attack Start");
+
             }
 
             return true;
@@ -451,7 +453,7 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    //metodo que vai verificar o comando de ativar o pow
+    //método que vai verificar o comando de ativar o pow
     public bool ActivePow()
     {
         //soco forte + chute fraco
@@ -466,35 +468,43 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    //////////////////// Metodos de processamento de ação ////////////////////
+    //////////////////// métodos de processamento de ação ////////////////////
 
-    //metodo que deve ser chamado na animação para trocar a ação para idle 
+    //método que deve ser chamado na animação para trocar a ação para idle 
     public void ChangeToIdle()
     {
-        //metodo que vai verificar se precisa mudar para a ação de stum
+        //método que vai verificar se precisa mudar para a ação de stun
         if (ResolveStun()) return;
 
-        //metodo que vai verificar se precisa mudar para a ação de virar para o outro lado
+        //método que vai verificar se precisa mudar para a ação de virar para o outro lado
         if (ChangeSide()) return;
 
         SetAction(0);
         anim.Play("Idle");
     }
 
-    //metodo que deve ser chamado na animação para trocar a ação para idle 
+    //método que deve ser chamado na animação para trocar a ação para idle 
     public void ChangeToCrouchedIdle()
     {
-        //metodo que vai verificar se precisa mudar para a ação de stum
+        //método que vai verificar se precisa mudar para a ação de stun
         if (ResolveStun()) return;
 
-        //metodo que vai verificar se precisa mudar para a ação de virar para o outro lado
+        //método que vai verificar se precisa mudar para a ação de virar para o outro lado
         if (ChangeSide()) return;
+
+        //verificando bug
+        if(action == 730)
+        {
+            Debug.Log("O BUG ESTAVA AQUI");
+
+            return;
+        }
 
         SetAction(11);
         anim.Play("Crouched Idle");
     }
 
-    //metodo que vai verificar se o personagem deve correr ou pular para tras
+    //método que vai verificar se o personagem deve correr ou pular para trás
     private bool Run()
     {
         bool changeAction = false, running = false;
@@ -509,7 +519,7 @@ public class PlayerController : MonoBehaviour {
             {
                 running = true;
             }
-            else//pulo para tras
+            else//pulo para trás
             {
                 running = false;
             }
@@ -520,7 +530,7 @@ public class PlayerController : MonoBehaviour {
             CheckIfCanSwitchTo90or100(ic.GetBtUpImputs(0, 4)))
         {
             changeAction = true;
-            if (facingRight)//pulo para tras
+            if (facingRight)//pulo para trás
             {
                 running = false;
             }
@@ -551,11 +561,11 @@ public class PlayerController : MonoBehaviour {
             return true;
         }
 
-        return false;//o personagem não está nem pulando para tras nem correndo
+        return false;//o personagem não está nem pulando para trás nem correndo
     }
 
-    //metodo que vai verificar se o personagem deve se agaichar
-    private bool Crouche()
+    //método que vai verificar se o personagem deve se agachar
+    private bool Crouch()
     {
         if (ic.GetButtons(1))
         {
@@ -567,16 +577,16 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    //metodo que vai processar a ação Idle - 0
+    //método que vai processar a ação Idle - 0
     private void ProcessIdle()
     {
-        //metodo que vai verificar se precisa mudar para a ação de virar para o outro lado
+        //método que vai verificar se precisa mudar para a ação de virar para o outro lado
         if(ChangeSide() ) return;
         
-        //metodo que vai processar os botões de ação
+        //método que vai processar os botões de ação
         ActionButtons();
 
-        //se a ação tiver sido mudada sai do metodo que processa a ação idle
+        //se a ação tiver sido mudada sai do método que processa a ação idle
         if (action != 0) return;
 
 
@@ -591,9 +601,9 @@ public class PlayerController : MonoBehaviour {
                     SetAction(50);//mudando para a ação de pulo para frente
                     anim.Play("Preparation to Jump");
                 }
-                else//pulando para tras
+                else//pulando para trás
                 {
-                    SetAction(70);//mudando para a ação de pulo para tras
+                    SetAction(70);//mudando para a ação de pulo para trás
                     anim.Play("Preparation to Jump");
                 }
 
@@ -603,7 +613,7 @@ public class PlayerController : MonoBehaviour {
 
                 return;
             }
-            else//movimentação horizoltal
+            else//movimentação horizontal
             {
                 if (facingRight)//andar
                 {
@@ -637,9 +647,9 @@ public class PlayerController : MonoBehaviour {
         {
             if ( ic.GetButtons(3) )//verifica se o botão para cima está pressionado
             {
-                if (facingRight)//pulando para tras
+                if (facingRight)//pulando para trás
                 {
-                    SetAction(70);//ação de pulo para tras
+                    SetAction(70);//ação de pulo para trás
                     anim.Play("Preparation to Jump");
                 }
                 else//pulando para frente
@@ -685,9 +695,9 @@ public class PlayerController : MonoBehaviour {
 
 
         //se abaixando
-        if (Crouche())  return; 
+        if (Crouch())  return; 
 
-        //pulo na vertical sem força horizoltal
+        //pulo na vertical sem força horizontal
         if (ic.GetButtons(3) && !ic.GetButtons(0) && !ic.GetButtons(2))
         {
             SetAction(40);//ação de pulo forte ou fraco 
@@ -701,10 +711,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação Crouching - 10
+    //método que vai processar a ação Crouching - 10
     private void ProcessCrouching()
     {
-        //metodo que vai verificar se precisa mudar para a ação de virar para o outro lado
+        //método que vai verificar se precisa mudar para a ação de virar para o outro lado
         if (ChangeSide()) return;
         
         ActionButtons();
@@ -712,10 +722,10 @@ public class PlayerController : MonoBehaviour {
         return;
     }
 
-    //metodo que vai processar a ação CrouchedIdle - 11
+    //método que vai processar a ação CrouchedIdle - 11
     private void ProcessCrouchedIdle()
     {
-        //metodo que vai verificar se precisa mudar para a ação de virar para o outro lado
+        //método que vai verificar se precisa mudar para a ação de virar para o outro lado
         if (ChangeSide()) return;
 
         ActionButtons();
@@ -729,23 +739,23 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação Getting Up From The Crouch - 12
+    //método que vai processar a ação Getting Up From The Crouch - 12
     private void ProcessGettingUpFromTheCrouch()
     {
         ActionButtons();
     }
 
-    //metodo que vai processar a ação Walk - 20
+    //método que vai processar a ação Walk - 20
     private void ProcessWalk()
     {
-        //metodo que vai processar os botões de ação
+        //método que vai processar os botões de ação
         ActionButtons();
 
-        //se a ação tiver sido mudada sai do metodo que processa a ação idle
+        //se a ação tiver sido mudada sai do método que processa a ação idle
         if (action != 20) return;
 
         //se abaixando
-        if (Crouche()) return;
+        if (Crouch()) return;
 
 
         if (ic.GetButtons(3))//pulo
@@ -782,19 +792,20 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação WalkBackwards - 30
+    //método que vai processar a ação WalkBackwards - 30
     private void ProcessWalkBackwards()
     {
-        //metodo que vai processar os botões de ação
+        //método que vai processar os botões de ação
         ActionButtons();
         
-        //se a ação tiver sido mudada sai do metodo que processa a ação idle
+        //se a ação tiver sido mudada sai do método que processa a ação idle
         if (action != 30) return;
 
         //se abaixando
-        if (Crouche()) return;
+        if (Crouch()) return;
 
 
+        //pulando para trás
         if ( ic.GetButtons(3) )
         {
             SetAction(70);
@@ -805,6 +816,7 @@ public class PlayerController : MonoBehaviour {
             return;
         }
 
+        //verificações para mudar para idle
         if ((ic.GetButtons(0) && !facingRight) ||
             (ic.GetButtons(2) && facingRight) ||
             (!ic.GetButtons(0) && !ic.GetButtons(2)))
@@ -814,20 +826,27 @@ public class PlayerController : MonoBehaviour {
             SetAction(0);
             anim.Play("Idle");
         }
+
+        //verificação se não houve o dash back
         else if (!Run())
         {
-            if (ic.GetButtons(0) && facingRight)
+            if(oAC.GetAttacking())//se o oponente estiver atacando
+            {
+                SetAction(110);
+                anim.Play("Defending");
+            }
+            else if (ic.GetButtons(0) && facingRight)//se movimentando para esquerda
             {
                 rb.velocity = new Vector2(walkSpeed * -1, rb.velocity.y);
             }
-            else if (ic.GetButtons(2) && !facingRight)
+            else if (ic.GetButtons(2) && !facingRight)//se movimentando para a direita
             {
                 rb.velocity = new Vector2(walkSpeed, rb.velocity.y);
             }
         }
     }
 
-    //metodo que vai processar a ação WeakJump - 40
+    //método que vai processar a ação WeakJump - 40
     private void ProcessPreparationToJump()
     {
         if (jump)
@@ -847,7 +866,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação rising - 41
+    //método que vai processar a ação rising - 41
     private void ProcessRising()
     {
         ActionButtons();
@@ -861,7 +880,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação end of climp - 42
+    //método que vai processar a ação end of climp - 42
     private void ProcessEndOfClimp()
     {
         ActionButtons();
@@ -875,7 +894,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação falling - 43
+    //método que vai processar a ação falling - 43
     private void ProcessFalling()
     {
         ActionButtons();
@@ -889,13 +908,13 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação landing - 44
+    //método que vai processar a ação landing - 44
     private void ProcessLanding()
     {
         SetPlayerLayer(7);  //resetando a layer do personagem
     }
 
-    //metodo que vai processar a ação Rising After Attaque - 45
+    //método que vai processar a ação Rising After Attaque - 45
     private void ProcessRisingAfterAttaque()
     {
         if (rb.velocity.y < 2)
@@ -905,7 +924,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação End Of Climp After Attaque - 46
+    //método que vai processar a ação End Of Climp After Attaque - 46
     private void ProcessEndOfClimpAfterAttaque()
     {
         if (grounded)
@@ -922,7 +941,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação Falling After Attaque - 47
+    //método que vai processar a ação Falling After Attaque - 47
     private void ProcessFallingAfterAttaque()
     {
         if (grounded)
@@ -932,7 +951,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação Preparation To Frontal Jump - 50
+    //método que vai processar a ação Preparation To Frontal Jump - 50
     private void ProcessPreparationToFrontalJump()
     {
         if (jump)
@@ -943,13 +962,13 @@ public class PlayerController : MonoBehaviour {
                 {
                     rb.velocity = new Vector2(jumpRollingSpeed, 0);//adicionando velocidade para frente
 
-                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por tras do outro personagem
+                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por trás do outro personagem
                 }
                 else
                 {
                     rb.velocity = new Vector2(jumpRollingSpeed * -1, 0);//adicionando velocidade para frente
 
-                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por tras do outro personagem
+                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por trás do outro personagem
                 }
 
                 rb.AddForce(new Vector2(0, strongJumpForce));//adicionando força ao pulo
@@ -962,13 +981,13 @@ public class PlayerController : MonoBehaviour {
                 {
                     rb.velocity = new Vector2(jumpRollingSpeed, 0);//adicionando velocidade para frente
 
-                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por tras do outro personagem
+                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por trás do outro personagem
                 }
                 else
                 {
                     rb.velocity = new Vector2(jumpRollingSpeed * -1, 0);//adicionando velocidade para frente
 
-                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por tras do outro personagem
+                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por trás do outro personagem
                 }
 
                 rb.AddForce(new Vector2(0, weakJumpForce));//adicionando força ao pulo
@@ -979,7 +998,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação Rising do pulo forte para frente - 61
+    //método que vai processar a ação Rising do pulo forte para frente - 61
     private void ProcessRisingStrongFrontalJump()
     {
         ActionButtons();
@@ -993,7 +1012,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação de falling do pulo forte para frente - 63
+    //método que vai processar a ação de falling do pulo forte para frente - 63
     private void ProcessFrontalJumpFalling()
     {
         if (grounded)
@@ -1003,7 +1022,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação Preparation To Backwards Jump - 70
+    //método que vai processar a ação Preparation To Backwards Jump - 70
     private void ProcessePreparationToBackwardsJump()
     {
         if (jump)
@@ -1014,13 +1033,13 @@ public class PlayerController : MonoBehaviour {
                 {
                     rb.velocity = new Vector2(jumpRollingSpeed * -1, 0);//adicionando velocidade para frente
 
-                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por tras do outro personagem
+                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por trás do outro personagem
                 }
                 else
                 {
                     rb.velocity = new Vector2(jumpRollingSpeed, 0);//adicionando velocidade para frente
 
-                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por tras do outro personagem
+                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por trás do outro personagem
                 }
 
                 rb.AddForce(new Vector2(0, strongJumpForce));
@@ -1034,13 +1053,13 @@ public class PlayerController : MonoBehaviour {
                 {
                     rb.velocity = new Vector2(jumpRollingSpeed * -1, 0);//adicionando velocidade para frente
 
-                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por tras do outro personagem
+                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por trás do outro personagem
                 }
                 else
                 {
                     rb.velocity = new Vector2(jumpRollingSpeed, 0);//adicionando velocidade para frente
 
-                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por tras do outro personagem
+                    SetPlayerLayer(9);  //mudando a layer do personagem para passar por trás do outro personagem
                 }
 
                 rb.AddForce(new Vector2(0, weakJumpForce));
@@ -1051,7 +1070,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação Rising do pulo forte para tras - 81 
+    //método que vai processar a ação Rising do pulo forte para trás - 81 
     private void ProcessRisingStrongBackwardsJump()
     {
         ActionButtons();
@@ -1065,7 +1084,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação de falling do pulo forte para tras - 83
+    //método que vai processar a ação de falling do pulo forte para trás - 83
     private void ProcessBackWardsJumpFalling()
     {
         if (grounded)
@@ -1075,13 +1094,13 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação de Start Of Run - 90
+    //método que vai processar a ação de Start Of Run - 90
     private void ProcessStartOfRun()
     {
-        //metodo que vai processar os botões de ação
+        //método que vai processar os botões de ação
         ActionButtons();
 
-        //se a ação tiver sido mudada sai do metodo que processa a ação rum
+        //se a ação tiver sido mudada sai do método que processa a ação rum
         if (action != 90) return;
 
 
@@ -1091,13 +1110,13 @@ public class PlayerController : MonoBehaviour {
             rb.velocity = new Vector2(runSpeed * -1, 0);
     }
 
-    //metodo que vai processar a ação run - 91
+    //método que vai processar a ação run - 91
     private void ProcessRun()
     {
-        //metodo que vai processar os botões de ação
+        //método que vai processar os botões de ação
         ActionButtons();
 
-        //se a ação tiver sido mudada sai do metodo que processa a ação rum
+        //se a ação tiver sido mudada sai do método que processa a ação rum
         if (action != 91) return;
 
 
@@ -1131,27 +1150,26 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    //metodo que vai processar a ação slide - 92
+    //método que vai processar a ação slide - 92
     private void ProcessSlide()
     {
-        //metodo que vai processar os botões de ação
+        //método que vai processar os botões de ação
         ActionButtons();
 
-        //se a ação tiver sido mudada sai do metodo que processa a ação rum
+        //se a ação tiver sido mudada sai do método que processa a ação rum
         if (action != 92) return;
-
 
         rb.velocity = Vector2.zero;
     }
 
-    //metodo que vai processar a ação Dash Back - 100
+    //método que vai processar a ação Dash Back - 100
     private void ProcessDashBack()
     {
         if( facingRight )
-            rb.velocity = new Vector2(runSpeed * -1, rb.velocity.y);//adicionando velocidade para tras
+            rb.velocity = new Vector2(runSpeed * -1, rb.velocity.y);//adicionando velocidade para trás
 
         else
-            rb.velocity = new Vector2(runSpeed, rb.velocity.y);//adicionando velocidade para tras
+            rb.velocity = new Vector2(runSpeed, rb.velocity.y);//adicionando velocidade para trás
 
         if (grounded)
         {
@@ -1162,7 +1180,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação recover - 102
+    //método que vai processar a ação recover - 102
     private void ProcessDashBackRecover()
     {
         if ( ic.GetButtons(2) && !facingRight)
@@ -1184,53 +1202,55 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar a ação defence - 111
+    //método que vai processar a ação defence - 111
     private void ProcessDefence()
     {
-        if(!ic.GetButtons(0) && !oAC.GetAttacking())
+        if((facingRight && !ic.GetButtons(0)) ||   //se o personagem estiver virado para direita
+           (!facingRight && !ic.GetButtons(2)))     //se o personagem estiver virado para a esquerda
         {
             SetAction(113);
             anim.Play("DefenceExit");
         }
     }
 
-    //metodo que vai processar a ação defence crouched - 121
+    //método que vai processar a ação defence crouched - 121
     private void ProcessDefenceCrouched()
     {
-        if (!ic.GetButtons(0) && !oAC.GetAttacking())
+        if((facingRight && !ic.GetButtons(0)) ||   //se o personagem estiver virado para direita
+           (!facingRight && !ic.GetButtons(2)))     //se o personagem estiver virado para a esquerda
         {
             SetAction(123);
             anim.Play("DefenceCrouchedExit");
         }
     }
     
-    //metodo que vai processar a ação Front Rolling - 131
+    //método que vai processar a ação Front Rolling - 131
     private void ProcessFrontRolling()
     {
         if(facingRight) rb.velocity = new Vector2(rollinSpeed-1, 0);
         else rb.velocity = new Vector2((rollinSpeed-1) * -1, 0);
     }
 
-    //metodo que vai processar a ação Front Rolling End - 132
+    //método que vai processar a ação Front Rolling End - 132
     private void ProcessFrontRollingEnd()
     { 
         rb.velocity = new Vector2(0, 0);
     }
 
-    //metodo que vai processar a ação back rolling - 141
+    //método que vai processar a ação back rolling - 141
     private void ProcessBackRolling()
     {
         if (facingRight) rb.velocity = new Vector2(rollinSpeed * -1, 0);
         else rb.velocity = new Vector2(rollinSpeed, 0);
     }
 
-    //metodo que vai processar a ação back rolling end - 142
+    //método que vai processar a ação back rolling end - 142
     private void ProcessBackRollingEnd()
     {
         rb.velocity = new Vector2(0, 0);
     }
 
-    //metodo que vai processar a ação Chance Side - 151
+    //método que vai processar a ação Chance Side - 151
     private void ProcessChangeSideEnd()
     {
         
@@ -1243,7 +1263,7 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-    //metodo que vai processar Chance Side Crouched - 161
+    //método que vai processar Chance Side Crouched - 161
     private void ProcessChanceSideCrouched()
     {
         if (action == 161)
@@ -1265,10 +1285,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
     
-    //metodo que vai processar Grab and throw forward Preparation - 460
+    //método que vai processar Grab and throw forward Preparation - 460
     private void ProcessGrabAndThrowForWardPreparation()
     {
-        //se o outro personagem tambem der um comando para agarrar
+        //se o outro personagem também der um comando para agarrar
         if (oPC.GetAction() == 460 || oPC.GetAction() == 470)
         {
             SetAction(930);
@@ -1312,7 +1332,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Grab and throw forward - 461
+    //método que vai processar Grab and throw forward - 461
     public void ProcessGrabAndThrowForward(int frame)
     {
         switch(frame)//verificando o frame que recebe e processando de acordo
@@ -1366,10 +1386,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Grab And Throw For Backward Preparation - 470
+    //método que vai processar Grab And Throw For Backward Preparation - 470
     private void ProcessGrabAndThrowForBackwardPreparation()
     {
-        //se o outro personagem tambem der um comando para agarrar
+        //se o outro personagem também der um comando para agarrar
         if (oPC.GetAction() == 460 || oPC.GetAction() == 470)
         {
             SetAction(930);
@@ -1420,7 +1440,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Grab And Throw For Backward - 471
+    //método que vai processar Grab And Throw For Backward - 471
     public void ProcessGrabAndThrowForBackward(int frame)
     {
         switch (frame)//verificando o frame que recebe e processando de acordo
@@ -1465,7 +1485,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Knock Down Rising - 950
+    //método que vai processar Knock Down Rising - 950
         private void ProcessKnockDownRising()
     {
         if (rb.velocity.y < 0)
@@ -1475,7 +1495,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Knock Down Falling - 951
+    //método que vai processar Knock Down Falling - 951
     private void ProcessKnockDownFalling()
     {
         if (grounded)
@@ -1485,7 +1505,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Hard Knock Down Rising - 960
+    //método que vai processar Hard Knock Down Rising - 960
     private void ProcessHardKnockDownRising()
     {
         if (rb.velocity.y < 2)
@@ -1495,7 +1515,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Hard Knock Down Falling - 961
+    //método que vai processar Hard Knock Down Falling - 961
     private void ProcessHardKnockDownFalling()
     {
         if (grounded)
@@ -1505,7 +1525,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Taking Damage Jumping Rising - 980
+    //método que vai processar Taking Damage Jumping Rising - 980
     private void ProcessTakingDamageJumpingRising()
     {
         if (rb.velocity.y < 0)
@@ -1515,7 +1535,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Taking Damage Jumping Falling - 981
+    //método que vai processar Taking Damage Jumping Falling - 981
     private void ProcessTakingDamageJumpingFalling()
     {
         if (grounded)
@@ -1525,7 +1545,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Thrown Forward Rising - 991
+    //método que vai processar Thrown Forward Rising - 991
     private void ProcessThrownForwardRising()
     {
         if (rb.velocity.y < 0)
@@ -1534,7 +1554,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //metodo que vai processar Thrown Forward Falling - 992
+    //método que vai processar Thrown Forward Falling - 992
     private void ProcessThrownForwardFalling()
     {
         if(grounded)
@@ -1547,7 +1567,7 @@ public class PlayerController : MonoBehaviour {
     
     //////////////////// VERIFICADORES PARA TODOS OS PERSONAGENS ////////////////////
 
-    //metodo responsavel por verificar se o personagem pode mudar para a ação Run/DashBack - 90/100
+    //método responsável por verificar se o personagem pode mudar para a ação Run/DashBack - 90/100
     private bool CheckIfCanSwitchTo90or100(float value)
     {
         int a = -1;//variavel para verificar se o personagem fez alguma das ações 
@@ -1556,6 +1576,7 @@ public class PlayerController : MonoBehaviour {
         {
             //verificando lista de ações
             if (lastActions[i] == 43 || lastActions[i] == 63 || lastActions[i] == 83 || lastActions[i] == 12 || lastActions[i] == 101 || lastActions[i] == 102
+                || lastActions[i] == 111 || lastActions[i] == 121 
                 || lastActions[i] == 301 || lastActions[i] == 311 || lastActions[i] == 321 || lastActions[i] == 331 || lastActions[i] == 332 
                 || lastActions[i] == 421 || lastActions[i] == 431)
                 a = i;
@@ -1571,7 +1592,7 @@ public class PlayerController : MonoBehaviour {
         else return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a ação front rolling ou back rolling
+    //método responsável por verificar se o personagem pode mudar para a ação front rolling ou back rolling
     private bool CheckIfCanSwitchTo130or140()
     {
         if (action==0 || action == 300 || action == 320)
@@ -1581,7 +1602,7 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
     
-    //metodo responsavel por verificar se o personagem pode mudar para a ação Grab and throw forward
+    //método responsável por verificar se o personagem pode mudar para a ação Grab and throw forward
     private bool CheckIfCanSwitchTo460()
     {
         if ( (action == 0 || action == 20) && oPC.GetAction() < 900)
@@ -1592,7 +1613,7 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a ação Grab and Throw For Backward
+    //método responsável por verificar se o personagem pode mudar para a ação Grab and Throw For Backward
     private bool CheckIfCanSwitchTo470()
     {
         if ((action == 0 || action == 20) && oPC.GetAction() < 900)
@@ -1605,19 +1626,23 @@ public class PlayerController : MonoBehaviour {
     
     //////////////////// Outros ////////////////////
 
-    //metodo que vai instanciar a poeira do pulo
+    //método que vai instanciar a poeira do pulo
     public void InstantiateDust()
     {
-        Instantiate(dustEffectPrefab, dustEffectSpaw.position, dustEffectSpaw.rotation);
+        Instantiate(dustEffectPrefab,
+        new Vector2(dustEffectSpawn.position.x, -4.9f),
+        dustEffectSpawn.rotation);
     }
 
-    //metodo que vai instanciar o efeito de bater no chão
+    //método que vai instanciar o efeito de bater no chão
     public void InstantiateHitOnFloorEffect()
     {
-        Instantiate(hitOnFlorEffectPrefab, dustEffectSpaw.position, dustEffectSpaw.rotation);
+        Instantiate(hitOnFlorEffectPrefab,
+        new Vector2(dustEffectSpawn.position.x, -4.9f),
+        dustEffectSpawn.rotation);
     }
 
-    //metodo que vai mudar o personagem de lado sem fazer animação para as ações que jogam o personagem pro outro lado
+    //método que vai mudar o personagem de lado sem fazer animação para as ações que jogam o personagem pro outro lado
     public void JustChangeSide()
     {
         facingRight = !facingRight;
@@ -1629,17 +1654,17 @@ public class PlayerController : MonoBehaviour {
 
     //////////////////// Gets & Sets ////////////////////
 
-    //metodo responsavel por trocar a ação e gerar um historico de ações e tempos
+    //método responsável por trocar a ação e gerar um histórico de ações e tempos
     public void SetAction(int value)
     {
-        //atualizando o historico
+        //atualizando o histórico
         for( int a = 0; a < 4; a++ )
         {
             changedActionMoment[a] = changedActionMoment[a + 1];
             lastActions[a] = lastActions[a + 1];
         }
 
-        changedActionMoment[4] = (int)(Time.time * 1000);//guardando o tempo em que a ação foi mudada em milesegundos
+        changedActionMoment[4] = Time.time;//guardando o tempo em que a ação foi mudada em milesegundos
         lastActions[4] = action;//guardando a ultima ação executada
 
         canCancelAction = false;//mudando o estado da booleana que indica que uma ação pode ser cancelada
@@ -1757,7 +1782,7 @@ public class PlayerController : MonoBehaviour {
 
 /*          //anim.Play("Base Layer.Walk", 0, 0.25f);
 *           //anim.Play("nomeAnimacao", 0, 0.5f);
-*           O primeiro parâmetro é o nome da animação. O segundo é a camada, o terceiro é o tempo. O tempo é tipo uma porcentagem. 0.5 vai rodar no meio da animação. 0 no início e 1 no final
+*           O primeiro parâmetro é o nome da animação. O segundo é a camada, o terceiro é o tempo. O tempo é tipo uma percentagem. 0.5 vai rodar no meio da animação. 0 no início e 1 no final
 *       
 *       -IMPORTANTE-
 *       
@@ -1765,53 +1790,48 @@ public class PlayerController : MonoBehaviour {
 *           slide -> run
 *           slide -> golpes
 *           slide -> jump
-*           change cide -> run
-*           change cide -> golpes
-*           change cide -> jump
+*           change side -> run
+*           change side -> golpes
+*           change side -> jump
 *           walk -> crouch
-*           wakkbackwards -> crouch
+*           walkbackwards -> crouch
 *           
 *       
 *       BUGS E PROBLEMAS:
-*       
-*       *   CheckIfCanSwitchTo90or100 está com um erro que não deixa o personagem correr depois de realizar uma das ações da lista
-*       provavelmente só deixa correr depois das ações da lista terem saido da memoria - aparentemente não tem esse bug
-*   
-*   -De vez enquando o peronsagem se comporta incorretamente na colisão caindo depois do pulo - NÂO VI MAIS ACONTECER
-*   
-*   -depois da mudança do animator a ação run tbm está com bug de corrida infinita - NÂO VI MAIS ACONTECER
-*       
-*   -O rolamento para tras não funciona com o comando correto mais funciona de o comando for alterado para 2 botões pressionados ao mesmo tempo
+* 
+*   -De vez enquanto o personagem se comporta incorretamente na colisão caindo depois do pulo - NÂO VI MAIS ACONTECER
 *       
 *   -a força aplicada pelos golpes para empurrar não está funcionando corretamente, as vezes mais forte as vezes mais fraco
 * 
-*   -um personagem consegue empurar o outro no ar (só de acontecer colisão) aplicando força o suficiente para joga-lo longe 
-*       se um personagem estiver andando e o ourto pular vai acontecer isso
+*   -um personagem consegue empurrar o outro no ar (só de acontecer colisão) aplicando força o suficiente para joga-lo longe 
+*       se um personagem estiver andando e o outro pular vai acontecer isso
 * 
 *   -quando o personagem sofre um hard knock down ele voa longe com distancia inconstante
-*       tambem acontece quando o personagem sofre dano enquanto pula
-*       
-*   -o efeito de hit no chão pode instanciar no lugar errado (depois do agarrão)
-*   
-*   -é necessario tirar as hurtboxes das animações no chão e se recuperando
+*       também acontece quando o personagem sofre dano enquanto pula
+*
+*   -é necessário tirar as hurtboxes das animações no chão e se recuperando
 *   -as vezes o jogo calcula hit, ativa o efeito mais o oponente não executa uma animação de sofrendo dano
 *       Resolvendo um deve resolver o outro
-*   
 *   -As hurt boxes não estão servindo para reconhecer colisão com as hit boxes
-*       possivel solução: criar uma nova layer só para as boxes que estão em triger e deixar elas como boxes normais talvez se as trigger 
-*       boxes tambem estiverem nessa layer funcione
+*       possível solução: criar uma nova layer só para as boxes que estão em trigger e deixar elas como boxes normais talvez se as trigger 
+*       boxes também estiverem nessa layer funcione
 *       
 *   -Quando o Crack shoot é usado muito proximo o personagem colide com o outro e perde toda a velocidade em X
-*   
-*   -As ações que usam alguma forma de reposicionamento não estão funcionando como o esperado
-*       o ultimo frame da animação que chama a função para reposicionar é renderisado na posição errada pos ao inves de reposicionar e passar
-*       para a proxima animação ele reposiciona, imprime o frame atual na nova posição e então troca de animação
-*       uma solução é chamar o metodo de reposicionar no primeiro frame da nova animação e não no ultimo frame da animação anterior
-*           -burning knocle
 *       
 *   -Existem alguns ataques que não estão alterando o status de atacando corretamente
+*       Power Wave
+*       Round Wave 
+*       Power Geyser
 *   
-*   -no especial Buster Wolf as vezes o personagem muda para a ação 730 mais fica executando a animação crouched idle
-*   -O buster wolf pode pegar e passar direto pelo oponente e deixar ele bugado parado
+*   -no especial Buster Wolf as vezes o personagem muda para a ação 730 mais fica executando a animação crouched idle - aparementemente resolvido linha 495
+*   
+*    -O buster wolf pode pegar e passar direto pelo oponente e deixar ele bugado parado
+*   -o especial Buster Wolf pode passar por dentro do oponente (pegando ou não)
+*
+*   -A camera não se comporta corretamente durante o Burning Knuckle (talvez também nos outros ataques em que o personagem se move)
+*   -Buster Wolf tbm
+*       -Por que o personagem se movimenta via animação não via Rigidbody.velocity
+*
+*   -se o Dash back for usado muito perto do fim do cenario a camera vai para fora do cenario e depois volta
 *   
 */

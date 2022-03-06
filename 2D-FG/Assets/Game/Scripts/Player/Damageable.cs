@@ -6,7 +6,7 @@ public class Damageable : MonoBehaviour
 {
     //referencias
     [SerializeField] private PlayerController pController;    //referencia ao TerryController do proprio personagem
-    [SerializeField] private Rigidbody2D rb;                     //referencia do Rigidbody2D
+    [SerializeField] private Rigidbody2D rb;                  //referencia do Rigidbody2D
 
     //variaveis de indicação
     [SerializeField] private int maxLifePoints; //quantidade inicial de pontos de vida do personagem
@@ -41,7 +41,7 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    //metodo que vai recever o tipo de ataque sofrido e processar o que deve acontecer
+    //método que vai recever o tipo de ataque sofrido e processar o que deve acontecer
     public void SetDamage(int action, int damageAmount, int stun, int strong)
     {
         //verificar se o ataque teve efeito 
@@ -64,7 +64,7 @@ public class Damageable : MonoBehaviour
             inCombo = true;//sinalisa que o personagem está sofrendo combo
             combo++;//soma o contador de combo
 
-            //implementar mecanica de dano redusido em combo longo
+            //implementar mecanica de dano reduzido em combo longo
 
             comboDamage += damageAmount;//soma o dano no contador de combo
 
@@ -347,16 +347,19 @@ public class Damageable : MonoBehaviour
 
                 break;
         }
+
+        //mudando o estado de acatando para falso
+        pController.SetAttackingFalse();
         
-        //chamando o metodo que vai empurar o personagem
+        //chamando o método que vai empurrar o personagem
         PushEffect(strong);
 
-        //chamando o metodo que vai calcular o stum
+        //chamando o método que vai calcular o stun
         StunEffect(stun);
         
     }
 
-    //metodo que vai ser chamado para empurar o personagem
+    //método que vai ser chamado para empurrar o personagem
     private void PushEffect(int strong)
     {
         if(pController.GetFacingRight())
@@ -369,7 +372,7 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    //metodo que vai ser chamado para causar dano ao player
+    //método que vai ser chamado para causar dano ao player
     private void Damage(int damageAmount)
     {
         if (currentLifePoints - damageAmount > 0)
@@ -379,7 +382,7 @@ public class Damageable : MonoBehaviour
         else currentLifePoints = 0;
     }
 
-    //metodo que vai ser chamado para causar dano a defesa do player
+    //método que vai ser chamado para causar dano a defesa do player
     private void DamageOnDefence(int damageAmount)
     {
         if (currentDefencePoints - damageAmount > 0)
@@ -395,7 +398,7 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    //metodo que vai ser chamado para gerar stun no player
+    //método que vai ser chamado para gerar stun no player
     private void StunEffect(int stun)
     {
         if (stunPoints - stun > 0)
@@ -409,13 +412,13 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    //metodo que vai regerenerar os pontos de defesa do player
-    private void DefeceRegeneration()
+    //método que vai regenerar os pontos de defesa do player
+    private void DefenceRegeneration()
     {
 
     }
 
-    //metodo que vai regenerar os pontos de stun do player
+    //método que vai regenerar os pontos de stun do player
     private void StunRegeneration()
     {
 

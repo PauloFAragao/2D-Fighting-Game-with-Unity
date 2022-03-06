@@ -1,21 +1,33 @@
 Projeto jogo de luta 2D
-Verção: 0.6
+Versão: 0.6
 -Implementado controle do player2
 -Implementadas alterações nos nomes dos botões do player 1
 -Comportamento da camera implementado sem usar o cinemachine
+-Implementado o attackControl do player2
 
-Verção: 0.5
--Implementadas mais alterações para que seja possivel a criação de novos personagens
--Implementada alteração na logica da corrida e do dash para tras
--Implementada alteração de order in layer nos agarões (sprite render)
--Implementada alteração na logica de como são chamadas as verificações dos golpes de comando
+-Correção de bugs
+	-Corrigido um bug no efeito de poeira e no efeito de pancada no chão que instanciavam na posição errada no eixo Y
+	-Corrigido um bug nas ações Power Dunk e Burning Knuckle onde o método de ajustar a posição do personagem era chamado
+	cedo de mais
+	-Corrigido um bug em que o personagem não entrava em defesa quando estava andando de costas e o oponente ataca
+	-Corrigido um bug no método que muda as ações, ele estava guardando o tempo de forma errada no histórico
+	-Corrigido um bug na ação Burning Knuckle, as animações estavam setadas para ciclar
+	-Diversas correções nos ataques que não estavam mudando o comportamento de atacado para não atacando (os ataques que usam
+	algum tipo de projétil ainda estão com problema)
+	-Encontrado o motivo do bug no começo de Buster Wolf, foi implementada uma solução temporária.
+
+Versão: 0.5
+-Implementadas mais alterações para que seja possível a criação de novos personagens
+-Implementada alteração na lógica da corrida e do dash para trás
+-Implementada alteração de order in layer nos agarrões (sprite render)
+-Implementada alteração na lógica de como são chamadas as verificações dos golpes de comando
 -Golpes de comando implementados
-	-Power Wave e projetil
+	-Power Wave e projétil
 	-Round Wave e efeito
 	-Burn Knuckle (fraco e forte)
 	-Crack Shoot (fraco e forte - tem um defeito ao se colidir com oponente)
 	-Power Dunk (fraco e forte - As reações ao sofrer esse ataque não foram implementadas)
-	-Rising Trackle (forte e fraco - As reações ao sofrer esse ataque não foram implementadas)
+	-Rising Tackle (forte e fraco - As reações ao sofrer esse ataque não foram implementadas)
 	-Power Geyser
 	-Buster Wolf
 
@@ -23,9 +35,9 @@ Verção: 0.5
 	-Landing For Recover
 	
 
-Verção: 0.4
--Implementado sofrer todos os danos possiveis enquanto pula
--Iseridas colisões de fim de cenario no alcance da camera
+Versão: 0.4
+-Implementado sofrer todos os danos possíveis enquanto pula
+-Inseridas colisões de fim de cenário no alcance da camera
 -Implementadas alterações para facilitar a criação de novos personagens
 -Animações e ações implementadas e funcionais:
 	-Crouched Weak Punch
@@ -42,7 +54,7 @@ Verção: 0.4
 	-Jumping Special Attack
 	-Hard Knock Down (todos)
 	-Active pow
-	-Stum
+	-Stun
 	-Taking Damage Jumping (todos)
 	-Taking Damage Crouched
 	-Grab and Throw Forward
@@ -54,15 +66,15 @@ Verção: 0.4
 	-Corrigido um bug que afetava todos os ataques durante o pulo fazendo com que o ataque não funcionasse caso o acerto 
 	ocorresse um instante antes do personagem aterrissar
 	-Corrigido um bug no corner que fazia o personagem ficar agarrado
-	-Corrigido bug visual que fazia algumas animações parassarem para idle quando o personagem tem que executar a ação de stum
+	-Corrigido bug visual que fazia algumas animações parassem para idle quando o personagem tem que executar a ação de stun
 
 
-Verção: 0.3
--Aspecto da camera alterado para 15:8 e size para 6.5
--Feitas alterações na fisica do personagem almentando a gravidade e algumas velocidades
+Versão: 0.3
+-Aspeto da camera alterado para 15:8 e size para 6.5
+-Feitas alterações na física do personagem aumentando a gravidade e algumas velocidades
 -Adicionado um efeito de poeira nas animações de pulo de de dash back
 -Implementadas melhorias na colisão dos personagens durante o pulo (o sistema ainda não está funcionando perfeitamente)
--Toda a forma como as animações são chamdas pelo animator foi alterada agora as animações são chamadas diretamente por codigo
+-Toda a forma como as animações são chamadas pelo animator foi alterada agora as animações são chamadas diretamente por código
 -Todas as animações foram modificadas para rodar a 60 fps
 -Implementado o sistema de combo, o sistema conta a quantidade de hits no combo e o dano sofrido
 -Alterando a cadencia de frames para maior fluidez
@@ -92,12 +104,12 @@ Verção: 0.3
 	-Corrigido um bug em dash back gerado pela alteração na cadencia da animação
 
 
-Verção: 0.2
--Implementadas as ações de ataque basico
+Versão: 0.2
+-Implementadas as ações de ataque básico
 -Implementadas as ações de sofrendo dano em situações especificas
 -Implementada detecção de acerto de golpes e reações
--Parcialmente implementada a mecanica em que um ataque empurra o oponente
--Implementado sistema em que o personagem sofre dano em 3 alturas diferentes (baixo, medio, alto) e outros tipos
+-Parcialmente implementada a mecânica em que um ataque empurra o oponente
+-Implementado sistema em que o personagem sofre dano em 3 alturas diferentes (baixo, médio, alto) e outros tipos
 -Implementado efeito de acerto
 -Implementada adição de pontos de especial no acerto
 -Implementada mudança de layer dos personagens para fazer o personagem que acertou ficar na frente
@@ -110,12 +122,12 @@ Verção: 0.2
 	-Corrigido um bug por falta de ligações no animator (animações de golpe e animação de virar para o outro lado com pulos)
 	-Corrigido um bug na animação de corrida
 	-Corrigido um bug na animação de dash back
-	-Corrigido o bug que fazia uma animação de ataque se repetir quando outro ataque era realisado
+	-Corrigido o bug que fazia uma animação de ataque se repetir quando outro ataque era realizado
 
 
-Verção: 0.1
+Versão: 0.1
 -Criação do projeto em 01/02/2022
--Implemetação das mecanicas de movimentação pre-existentes do projeto para implementação de mecanicas de movimentação
+-Implementação das mecânicas de movimentação pre-existentes do projeto para implementação de mecânicas de movimentação
 -Implementadas as colisões de hurtbox (colisões de onde sofrer dano)
 -Configuração das animações e configuração do animator
 	-idle

@@ -5,25 +5,25 @@ using UnityEngine;
 public class GenericCharacter : MonoBehaviour
 {
     //variaveis de controle
-    private bool avoidAttackLoop;       //variavel para evitar que um ataque fique fazendo loop por um botão estar pressionado
+    private bool avoidAttackLoop;       //variavel para evitar que um ataque fique fazendo loop por um botï¿½o estar pressionado
 
-    //variaveis de indicação
+    //variaveis de indicaÃ§Ã£o
     private float attackCommandTime;   //guarda o tempo em que foi feito o comando de ataque
     
     
-    //controle dos botões de ação
+    //controle dos botÃµes de aÃ§Ã£o
     public virtual void ActionButtons() {}
 
-    //metodo que vai verificar qual ação deve ser processada
+    //mÃ©todo que vai verificar qual aï¿½ï¿½o deve ser processada
     public virtual void ProcessActions() {}
     
     //////////////////// VERIFICADORES ////////////////////
     
 
-    public virtual bool CheckIfCanSwitchTo440(int action, bool canCancelAction)// <<<<<<<<<< Essemetodo precisa ser re-escrito na classe que herda
+    public virtual bool CheckIfCanSwitchTo440(int action, bool canCancelAction)// <<<<<<<<<< Esse mÃ©todo precisa ser re-escrito na classe que herda
     {  return true; }
     
-    public virtual bool CheckIfCanSwitchTo450(int action, bool canCancelAction)// <<<<<<<<<< Essemetodo precisa ser re-escrito na classe que herda
+    public virtual bool CheckIfCanSwitchTo450(int action, bool canCancelAction)// <<<<<<<<<< Esse mÃ©todo precisa ser re-escrito na classe que herda
     { return false; }
 
     //////////////////// Gets & Sets ////////////////////

@@ -763,6 +763,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 926315848, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323506129, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 904880078400969499, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
       propertyPath: Mc
       value: 
@@ -781,7 +789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4432341956873456526, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.97
+      value: -6.11
       objectReference: {fileID: 0}
     - target: {fileID: 4432341956873456526, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -820,7 +828,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7283397299566946330, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
-      propertyPath: strongBurnigKnuckleVelocity
+      propertyPath: weakBurningKnuckleVelocity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7283397299566946330, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
+      propertyPath: strongBurningKnuckleVelocity
       value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []

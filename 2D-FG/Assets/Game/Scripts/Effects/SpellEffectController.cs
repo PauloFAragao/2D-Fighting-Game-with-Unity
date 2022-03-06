@@ -11,13 +11,13 @@ public class SpellEffectController : MonoBehaviour
     //variaveis de controle
     [SerializeField] private float speed;   //velocidade de movimento
 
-    //variaveis de indicaÁ„o
+    //variaveis de indica√ß√£o
     private bool player1;                   //indica qual player usou o ataque
 
-    private bool rightDirection = true;     //direÁ„o do movimento
+    private bool rightDirection = true;     //dire√ß√£o do movimento
 
     //variaveis de estado
-    private bool stateCicle = true;         //true = estado em que se move e est· ativo para acerto / false = estado em que n„o se move e n„o pode acertar
+    private bool stateCicle = true;         //true = estado em que se move e est√° ativo para acerto / false = estado em que n√£o se move e n√£o pode acertar
 
 
     private void Awake()
@@ -40,10 +40,10 @@ public class SpellEffectController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //verifica se est· acertando o jogador certo e se ainda est· no estado ativo (se estiver executando a animaÁ„o end n„o deve poder pegar)
+        //verifica se est√° acertando o jogador certo e se ainda est√° no estado ativo (se estiver executando a anima√ß√£o end n√£o deve poder pegar)
         if ((collision.CompareTag("Player2") && player1) || (collision.CompareTag("Player1") && !player1))
         {
-            //metodo que vai ser especifico de cada magia e vai causar dano
+            //m√©todo que vai ser especifico de cada magia e vai causar dano
             DoDamage(collision);
 
             //mudando estado 
@@ -61,13 +61,13 @@ public class SpellEffectController : MonoBehaviour
         }
     }
 
-    //recebendo dados de direÁ„o e qual personagem acertar
-    public void SetData(bool diretion, bool player)
+    //recebendo dados de dire√ß√£o e qual personagem acertar
+    public void SetData(bool direction, bool player)
     {
-        rightDirection = diretion;
+        rightDirection = direction;
         player1 = player;
 
-        if (diretion)
+        if (direction)
         {
             transform.Rotate(new Vector3(0, 0, 0));
         }
@@ -79,11 +79,11 @@ public class SpellEffectController : MonoBehaviour
     
 
 
-    //metodo que vai mudar o estado dessa magia
-    public virtual void SetState(){ }// <<<<<<<<<< Essemetodo precisa ser re-escrito na classe que herda
+    //m√©todo que vai mudar o estado dessa magia
+    public virtual void SetState(){ }// <<<<<<<<<< Essem√©todo precisa ser re-escrito na classe que herda
 
-    //metodo que vai gerar dano no outro personagem
-    public virtual void DoDamage(Collider2D collision) { }// <<<<<<<<<< Essemetodo precisa ser re-escrito na classe que herda
+    //m√©todo que vai gerar dano no outro personagem
+    public virtual void DoDamage(Collider2D collision) { }// <<<<<<<<<< Essem√©todo precisa ser re-escrito na classe que herda
 
 
 

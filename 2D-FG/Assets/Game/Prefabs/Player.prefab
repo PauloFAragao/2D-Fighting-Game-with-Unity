@@ -623,7 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderTrasnform: {fileID: 4432341957513168174}
   mc: {fileID: 0}
-  dustEffectSpaw: {fileID: 1317686291}
+  dustEffectSpawn: {fileID: 1317686291}
   dustEffectPrefab: {fileID: 5194165081874632536, guid: 7d26c583b765897488631abedc543147, type: 3}
   hitOnFlorEffectPrefab: {fileID: 5908387657962225816, guid: cc0b9cb14ee42ec4b9843565a75d2c70, type: 3}
   player1: 1
@@ -657,8 +657,8 @@ MonoBehaviour:
   powerGeyserEffectPrefab: {fileID: 4567536940670688605, guid: 729501ced1794d041b7a2f1e0c44378a, type: 3}
   EspecialEffectPrefab: {fileID: 8714914228604283542, guid: 8935c5091d16fe24daf10898a03f87a6, type: 3}
   roundWaveVelocity: 15
-  weakBurnigKnuckleVelocity: 15
-  strongBurnigKnuckleVelocity: 18
+  weakBurningKnuckleVelocity: 18
+  strongBurningKnuckleVelocity: 22
 --- !u!1 &4432341957221425936
 GameObject:
   m_ObjectHideFlags: 0

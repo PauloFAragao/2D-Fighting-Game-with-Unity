@@ -14,7 +14,7 @@ public class TerryController : GenericCharacter
     private PlayerController opponent;          //referencia a classe PlayerController do oponente
     private Damageable oDamageable;             //referencia a classe Damageable do oponente
 
-    public Transform EffectSpawner;             //referencia para o transform que vai ser usado como ponto de spaw do prefab
+    public Transform EffectSpawner;             //referencia para o transform que vai ser usado como ponto de spawn do prefab
 
     //prefabs
     public GameObject powerWaveEffectPrefab;    //prefab do efeito do Power Wave
@@ -27,8 +27,8 @@ public class TerryController : GenericCharacter
     //variaveis de controle
     [SerializeField] private float roundWaveVelocity;           //velocidade de movimento durante o round wave
 
-    [SerializeField] private float weakBurnigKnuckleVelocity;   //velocidade de movimento durante o Burnig Knuckle com soco fraco
-    [SerializeField] private float strongBurnigKnuckleVelocity; //velocidade de movimento durante o Burnig Knuckle com soco forte
+    [SerializeField] private float weakBurningKnuckleVelocity;   //velocidade de movimento durante o Burning Knuckle com soco fraco
+    [SerializeField] private float strongBurningKnuckleVelocity; //velocidade de movimento durante o Burning Knuckle com soco forte
 
     private void Awake()
     {
@@ -51,19 +51,19 @@ public class TerryController : GenericCharacter
 
     }
 
-    //controle dos bot�es de a��o
+    //controle dos botões de ação
     public override void ActionButtons()
     {
-        //verificar se precisa mudar para alguma a��o do bot�o A
+        //verificar se precisa mudar para alguma ação do botão A
         if (ProcessAButton()) return;
 
-        //verificar se precisa mudar para alguma a��o do bot�o B
+        //verificar se precisa mudar para alguma ação do botão B
         if (ProcessBButton()) return;
 
-        //verificar se precisa mudar para alguma a��o do bot�o C
+        //verificar se precisa mudar para alguma ação do botão C
         if (ProcessCButton()) return;
 
-        //verificar se precisa mudar para alguma a��o do bot�o D
+        //verificar se precisa mudar para alguma ação do botão D
         if (ProcessDButton()) return;
 
     }
@@ -199,12 +199,12 @@ public class TerryController : GenericCharacter
                 ProcessPowerDunkFalling();
                 break;
 
-            case 681://Weak Burnig Knuckle
-                ProcessWeakBurnigKnuckle();
+            case 681://Weak Burning Knuckle
+                ProcessWeakBurningKnuckle();
                 break;
 
-            case 691://Strong Burnig Knuckle
-                ProcessStrongBurnigKnuckle();
+            case 691://Strong Burning Knuckle
+                ProcessStrongBurningKnuckle();
                 break;
 
             case 701://Weak Rising Tackle
@@ -221,7 +221,7 @@ public class TerryController : GenericCharacter
 
     //////////////////// Processadores ////////////////////
 
-    //metodo que vai processar a a��o falling - 48
+    //método que vai processar a ação falling - 48
     private void ProcessFallingForRecover()
     {
         if (terry.GetGrounded())
@@ -231,13 +231,13 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar weak punch preparation - 300
+    //método que vai processar weak punch preparation - 300
     private void ProcessWeakPunchPreparation()
     {
         //verificando o comando de rolamento
         if (terry.Rolling()) return;
 
-        //verificando se o comando para o soco fraco j� pode ser executado
+        //verificando se o comando para o soco fraco já pode ser executado
         if (Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetAction(301);
@@ -245,7 +245,7 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Strong punch preparation - 310
+    //método que vai processar Strong punch preparation - 310
     private void ProcessStrongPunchPreparation()
     {
         //verificando o comando de ataque especial comum
@@ -254,7 +254,7 @@ public class TerryController : GenericCharacter
         //verificar o comando de pow
         if (terry.ActivePow()) return;
 
-        //verificando se o comando para o soco forte j� pode ser executado
+        //verificando se o comando para o soco forte já pode ser executado
         if (Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetAction(311);
@@ -262,7 +262,7 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Weak Kick preparation - 320
+    //método que vai processar Weak Kick preparation - 320
     private void ProcessWeakKickPreparation()
     {
         //verificando o comando de ataque especial comum
@@ -271,7 +271,7 @@ public class TerryController : GenericCharacter
         //verificar o comando de pow
         if (terry.ActivePow()) return;
 
-        //verificando se o comando para o chute fraco j� pode ser executado
+        //verificando se o comando para o chute fraco já pode ser executado
         if (Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetAction(321);
@@ -279,13 +279,13 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Strong Kick preparation - 330
+    //método que vai processar Strong Kick preparation - 330
     private void ProcessStrongKickPreparation()
     {
         //verificando o comando de ataque especial comum
         if (terry.SpecialCommon()) return;
 
-        //verificando se o comando para o chute forte j� pode ser executado
+        //verificando se o comando para o chute forte já pode ser executado
         if (Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetAction(331);
@@ -293,7 +293,7 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Strong Kick - 331
+    //método que vai processar Strong Kick - 331
     private void ProcessStrongKick()
     {
         if (terry.GetFacingRight())
@@ -303,10 +303,10 @@ public class TerryController : GenericCharacter
             rb.velocity = new Vector2(-5, 0);//mudando a velocidade do personagem
     }
 
-    //metodo que vai processar Crouched Weak Punch preparation - 340
+    //método que vai processar Crouched Weak Punch preparation - 340
     private void ProcessCrouchedWeakPunchPreparation()
     {
-        //verificando se o comando para o soco fraco agachado j� pode ser executado
+        //verificando se o comando para o soco fraco agachado já pode ser executado
         if (Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetAction(341);
@@ -314,10 +314,10 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Crouched Strong Punch Preparation - 350
+    //método que vai processar Crouched Strong Punch Preparation - 350
     private void ProcessCrouchedStrongPunchPreparation()
     {
-        //verificando se o comando para o soco forte agachado j� pode ser executado
+        //verificando se o comando para o soco forte agachado já pode ser executado
         if (Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetAction(351);
@@ -325,10 +325,10 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Crouched Weak Kick Preparation - 360
+    //método que vai processar Crouched Weak Kick Preparation - 360
     private void ProcessCrouchedWeakKickPreparation()
     {
-        //verificando se o comando para o chute fraco agachado j� pode ser executado
+        //verificando se o comando para o chute fraco agachado já pode ser executado
         if (Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetAction(361);
@@ -336,10 +336,10 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Crouched Strong Kick Preparation - 370
+    //método que vai processar Crouched Strong Kick Preparation - 370
     private void ProcessCrouchedStrongKickPreparation()
     {
-        //verificando se o comando para o chute forte agachado j� pode ser executado
+        //verificando se o comando para o chute forte agachado já pode ser executado
         if (Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetAction(371);
@@ -347,17 +347,20 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Jumping Weak Punch Preparation- 380
+    //método que vai processar Jumping Weak Punch Preparation- 380
     private void ProcessJumpingWeakPunchPreparation()
     {
         if (terry.GetGrounded())
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(44);
             terry.SetAnimation("Landing");
             return;
         }
 
-        //verificando se o comando para o chute forte agachado j� pode ser executado
+        //verificando se o comando para o chute forte agachado já pode ser executado
         if (!terry.GetGrounded() && Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetPlayerLayer(7);  //resetando a layer do personagem
@@ -367,27 +370,33 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Jumping Weak Punch - 381
+    //método que vai processar Jumping Weak Punch - 381
     private void ProcessJumpingWeakPunch()
     {
         if (terry.GetGrounded())
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(44);
             terry.SetAnimation("Landing");
         }
     }
 
-    //metodo que vai processar Jumping Strong Punch Preparation - 390
+    //método que vai processar Jumping Strong Punch Preparation - 390
     private void ProcessJumpingStrongPunchPreparation()
     {
         if (terry.GetGrounded())
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(44);
             terry.SetAnimation("Landing");
             return;
         }
 
-        //verificando se o comando para o chute forte agachado j� pode ser executado
+        //verificando se o comando para o chute forte agachado já pode ser executado
         if (!terry.GetGrounded() && Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetPlayerLayer(7);  //resetando a layer do personagem
@@ -397,27 +406,33 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Jumping Strong Punch - 391
+    //método que vai processar Jumping Strong Punch - 391
     private void ProcessJumpingStrongPunch()
     {
         if (terry.GetGrounded())
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(44);
             terry.SetAnimation("Landing");
         }
     }
 
-    //metodo que vai processar Jumping Weak Kick Preparation - 400
+    //método que vai processar Jumping Weak Kick Preparation - 400
     private void ProcessJumpingWeakKickPreparation()
     {
         if (terry.GetGrounded())
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(44);
             terry.SetAnimation("Landing");
             return;
         }
 
-        //verificando se o comando para o chute forte agachado j� pode ser executado
+        //verificando se o comando para o chute forte agachado já pode ser executado
         if (!terry.GetGrounded() && Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetPlayerLayer(7);  //resetando a layer do personagem
@@ -427,27 +442,33 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Jumping Weak Kick - 401
+    //método que vai processar Jumping Weak Kick - 401
     private void ProcessJumpingWeakKick()
     {
         if (terry.GetGrounded())
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(44);
             terry.SetAnimation("Landing");
         }
     }
 
-    //metodo que vai processar Jumping Strong Kick Preparation - 410
+    //método que vai processar Jumping Strong Kick Preparation - 410
     private void ProcessJumpingStrongKickPreparation()
     {
         if (terry.GetGrounded())
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(44);
             terry.SetAnimation("Landing");
             return;
         }
 
-        //verificando se o comando para o chute forte agachado j� pode ser executado
+        //verificando se o comando para o chute forte agachado já pode ser executado
         if (!terry.GetGrounded() && Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetPlayerLayer(7);  //resetando a layer do personagem
@@ -457,17 +478,21 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Jumping Strong Kick - 411
+    //método que vai processar Jumping Strong Kick - 411
     private void ProcessJumpingStrongKick()
     {
         if (terry.GetGrounded())
+        
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(44);
             terry.SetAnimation("Landing");
         }
     }
 
-    //metodo que vai processar Jumping Attack End - 382/392/402/412/451
+    //método que vai processar Jumping Attack End - 382/392/402/412/451
     private void ProcessJumpingAttackEnd()
     {
         if (rb.velocity.y > 2)//Rising After Attaque
@@ -499,10 +524,10 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Gluted Strong Punch Preparation- 420
+    //método que vai processar close Strong Punch Preparation- 420
     private void ProcessCloseStrongPunchPreparation()
     {
-        //verificando se o comando para o soco forte colado j� pode ser executado
+        //verificando se o comando para o soco forte colado já pode ser executado
         if (Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetAction(421);
@@ -510,10 +535,10 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Gluted Kick Punch Preparation- 430
+    //método que vai processar close Kick Punch Preparation- 430
     private void ProcessCloseStrongKickPreparation()
     {
-        //verificando se o comando para o chute forte colado j� pode ser executado
+        //verificando se o comando para o chute forte colado já pode ser executado
         if (Time.time - GetAttackCommandTime() > .1f)
         {
             terry.SetAction(431);
@@ -521,25 +546,28 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Special Attack - 441
+    //método que vai processar Special Attack - 441
     private void ProcessSpecialAttack()
     {
         if (terry.GetFacingRight()) rb.velocity = new Vector2(terry.GetRunSpeed(), 0);
         else rb.velocity = new Vector2(terry.GetRunSpeed() * -1, 0);
     }
 
-    //metodo que vai processar Jumping Special Attack - 451
+    //método que vai processar Jumping Special Attack - 450
     private void ProcessJumpingSpecialAttack()
     {
         if (terry.GetGrounded() && rb.velocity.y < 0)
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(44);
             terry.SetAnimation("Landing");
             return;
         }
     }
 
-    //metodo que vai processar Weak Punch Forward Preparation - 600
+    //método que vai processar Weak Punch Forward Preparation - 600
     private void ProcessWeakPunchForwardPreparation()
     {
         if (Time.time - GetAttackCommandTime() > .1f)
@@ -549,7 +577,7 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Weak Punch Forward Preparation - 610
+    //método que vai processar Weak Punch Forward Preparation - 610
     private void ProcessRisingUpperPreparation()
     {
         if (Time.time - GetAttackCommandTime() > .09f)
@@ -559,19 +587,19 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar o Round Wave Moving - 631
+    //método que vai processar o Round Wave Moving - 631
     private void ProcessRoundWaveMoving()
     {
         rb.velocity = new Vector2(roundWaveVelocity, 0);
     }
 
-    //metodo que vai processar o Round Wave End - 632
+    //método que vai processar o Round Wave End - 632
     private void ProcessRoundWaveEnd()
     {
         rb.velocity = Vector2.zero;
     }
 
-    //metodo que vai processar CraCk Shoot Start - 640/650
+    //método que vai processar CraCk Shoot Start - 640/650
     public void ProcessCraCkShootStart()
     {
         if (terry.GetAction() == 640)
@@ -599,22 +627,23 @@ public class TerryController : GenericCharacter
         AjustPosition(2f);
     }
 
-    //metodo que vai processar Crack Shoot - 641/651
+    //método que vai processar Crack Shoot - 641/651
     private void ProcessCrackShoot()
     {
         if (rb.velocity.y <= 0)
         {
-            Debug.Log("menor que zero");
             if (terry.GetGrounded())
             {
-                Debug.Log("nochao");
+                //o personagem não está mais atacando
+                attackControl.SetAttacking(false);
+
                 terry.SetAction(49);
                 terry.SetAnimation("Landing For Recover");
             }
         }
     }
 
-    //metodo que vai processar o power dunk start - 660/670
+    //método que vai processar o power dunk start - 660/670
     public void ProcessPowerDunkStart()
     {
         if (terry.GetAction() == 660)
@@ -639,10 +668,10 @@ public class TerryController : GenericCharacter
             terry.SetAction(671);
             terry.SetAnimation("Power Dunk Jumping");
         }
-        AjustPosition(2f);
+        //AjustPosition(2f);
     }
 
-    //metodo que vai processar o power dunk Jumping - 661/671
+    //método que vai processar o power dunk Jumping - 661/671
     private void ProcessPowerDunkJumping()
     {
         if (rb.velocity.y < 2)
@@ -657,37 +686,40 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar o power dunk falling - 662/672
+    //método que vai processar o power dunk falling - 662/672
     private void ProcessPowerDunkFalling()
     {
         if (terry.GetGrounded())
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(49);
             terry.SetAnimation("Landing For Recover");
         }
     }
 
-    //metodo que vai processar o Weak Burnig Knuckle - 681
-    private void ProcessWeakBurnigKnuckle()
+    //método que vai processar o Weak Burning Knuckle - 681
+    private void ProcessWeakBurningKnuckle()
     {
         if(terry.GetFacingRight())
-            rb.velocity = new Vector2(weakBurnigKnuckleVelocity, 0);
+            rb.velocity = new Vector2(weakBurningKnuckleVelocity, 0);
 
         else
-            rb.velocity = new Vector2(weakBurnigKnuckleVelocity * -1, 0);
+            rb.velocity = new Vector2(weakBurningKnuckleVelocity * -1, 0);
     }
 
-    //metodo que vai processar o Strong Burnig Knuckle - 691
-    private void ProcessStrongBurnigKnuckle()
+    //método que vai processar o Strong Burning Knuckle - 691
+    private void ProcessStrongBurningKnuckle()
     {
         if (terry.GetFacingRight())
-            rb.velocity = new Vector2(strongBurnigKnuckleVelocity, 0);
+            rb.velocity = new Vector2(strongBurningKnuckleVelocity, 0);
 
         else
-            rb.velocity = new Vector2(strongBurnigKnuckleVelocity * -1, 0);
+            rb.velocity = new Vector2(strongBurningKnuckleVelocity * -1, 0);
     }
 
-    //metodo que vai processar Rising Tackle Start - 700/710
+    //método que vai processar Rising Tackle Start - 700/710
     public void RisingTackleStart()
     {
         if (terry.GetFacingRight())
@@ -708,7 +740,7 @@ public class TerryController : GenericCharacter
         }
     }
 
-    //metodo que vai processar Rising Tackle - 701/711
+    //método que vai processar Rising Tackle - 701/711
     private void ProcessRisingTackle()
     {
         if (terry.GetAction() == 701)
@@ -718,14 +750,17 @@ public class TerryController : GenericCharacter
             rb.velocity = new Vector2(rb.velocity.x, 23);
     }
 
-    //metodo que vai processar Rising Trackle Fall - 702/712
+    //método que vai processar Rising Trackle Fall - 702/712
     public void ProcessRisingTrackleFall()
     {
+        //o personagem não está mais atacando
+        attackControl.SetAttacking(false);
+
         terry.SetAction(48);
         terry.SetAnimation("Falling");
     }
 
-    //metodo que vai processar Buster Wolf - 731
+    //método que vai processar Buster Wolf - 731
     private void ProcessBusterWolf()
     {
         if (terry.GetFacingRight())
@@ -734,11 +769,14 @@ public class TerryController : GenericCharacter
             rb.velocity = new Vector2(-30, 0);
     }
     
-    //metodo que vai verificar qual proxima a��o tomar
+    //método que vai verificar qual proxima ação tomar
     public void BusterWolf()
     {
         if(terry.GetAction() == 731)
         {
+            //o personagem não está mais atacando
+            attackControl.SetAttacking(false);
+
             terry.SetAction(734);
             terry.SetAnimation("Buster Wolf Fail");
         }
@@ -751,28 +789,31 @@ public class TerryController : GenericCharacter
 
    //////////////////// OUTROS ////////////////////
 
-    //metodo que vai ser chamando para instanciar o projetil do power wave
+    //método que vai ser chamando para instanciar o projétil do power wave
     public void InstantiatePowerWeaveEffect()
     {
-        GameObject pw = Instantiate(powerWaveEffectPrefab, EffectSpawner.position, new Quaternion(0, 0, 0, 0));
+        GameObject pw = Instantiate( powerWaveEffectPrefab, EffectSpawner.position, new Quaternion(0, 0, 0, 0) );
+
         pw.GetComponent<PowerWaveEffectController>().SetData(terry.GetFacingRight(), terry.GetPlayer1());
     }
 
-    //metodo que vai ser chamando para instanciar o efeito do round wave
+    //método que vai ser chamando para instanciar o efeito do round wave
     public void InstantiateRoundWeaveEffect()
     {
         GameObject rw = Instantiate(roundWaveEffectPrefab, EffectSpawner.position, new Quaternion(0, 0, 0, 0));
+
         rw.GetComponent<RoundWaveEffectController>().SetData(terry.GetFacingRight(), terry.GetPlayer1());
     }
 
-    //metodo que vai ser chamando para instanciar o efeito do Power Geyser
+    //método que vai ser chamando para instanciar o efeito do Power Geyser
     public void InstantiatePowerGeyser()
     {
         GameObject pg = Instantiate(powerGeyserEffectPrefab, EffectSpawner.position, new Quaternion(0, 0, 0, 0));
+
         pg.GetComponent<PowerGeyserEffectController>().SetData(terry.GetFacingRight(), terry.GetPlayer1());
     }
 
-    //metodo que vai ajustar a posi��o do personagem em X
+    //método que vai ajustar a posição do personagem em X
     public void AjustPosition(float pos)
     {
         if (terry.GetFacingRight())
@@ -781,15 +822,15 @@ public class TerryController : GenericCharacter
             transform.position = new Vector3(transform.position.x - pos, transform.position.y, 0);
     }
 
-    //metodo que vai instanciar o efeito do especial
+    //método que vai instanciar o efeito do especial
     public void InstantiateEspecialEffect()
     {
         Instantiate(EspecialEffectPrefab, EffectSpawner.position, EffectSpawner.rotation);
     }
     
-    //////////////////// BOT�ES ////////////////////
+    //////////////////// botões ////////////////////
 
-    //processamento do bot�o A
+    //processamento do botão A
     private bool ProcessAButton()
     {
         if (inputController.GetButtons(4) && 
@@ -833,14 +874,14 @@ public class TerryController : GenericCharacter
                     return true;
                 }
 
-                //Burn Knuckle
+                //Burning Knuckle
                 if (CheckIfCanSwitchTo680(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand2(4))
                 {
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
                     terry.SetAction(680);
-                    terry.SetAnimation("Weak Burnig Knuckle");
+                    terry.SetAnimation("Weak Burning Knuckle");
                     
                     return true;
                 }
@@ -857,7 +898,7 @@ public class TerryController : GenericCharacter
                     return true;
                 }
 
-                //verificando qual a��o deve ser executada
+                //verificando qual ação deve ser executada
                 if (inputController.GetButtons(1) && 
                     CheckIfCanSwitchTo340(terry.GetAction(), terry.GetCanCancelAction()))//soco fraco agachado
                 {
@@ -881,7 +922,7 @@ public class TerryController : GenericCharacter
                     return true;
                 }
 
-                if(CheckIfCanSwitchTo300(terry.GetAction(), terry.GetCanCancelAction()))//soco fraco em p�
+                if(CheckIfCanSwitchTo300(terry.GetAction(), terry.GetCanCancelAction()))//soco fraco em pé
                 {
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
@@ -892,7 +933,7 @@ public class TerryController : GenericCharacter
                     return true;
                 }
 
-                //mudando o estado do personagem para n�o atacando
+                //mudando o estado do personagem para não atacando
                 attackControl.SetAttacking(false);
 
                 //mudando o controle que evita loop de ataque
@@ -903,7 +944,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //processamento do bot�o B
+    //processamento do botão B
     private bool ProcessBButton()
     {
         if (!inputController.GetButtons(4) &&
@@ -959,11 +1000,11 @@ public class TerryController : GenericCharacter
                     return true;
                 }
 
-                //Burn Knuckle
+                //Burning Knuckle
                 if (CheckIfCanSwitchTo690(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand2(5))
                 {
                     terry.SetAction(690);
-                    terry.SetAnimation("Strong Burnig Knuckle");
+                    terry.SetAnimation("Strong Burning Knuckle");
 
                     return true;
                 }
@@ -993,23 +1034,23 @@ public class TerryController : GenericCharacter
                     return true;
                 }
 
-                //agarr�o: direcional para frente e soco forte
+                //agarrão: direcional para frente e soco forte
                 if (CheckIfCanSwitchTo460Or470(terry.GetAction()) &&
                     (terry.GetFacingRight() && inputController.GetButtons(2) || !terry.GetFacingRight() && inputController.GetButtons(0)) &&
                     opponent.GetGrounded() && Mathf.Abs(terry.GetOTransformX() - transform.position.x) < 3.5)
                 {
 
-                    //se o outro personagem tambem der um comando para agarrar
+                    //se o outro personagem também der um comando para agarrar
                     if (opponent.GetAction() == 460 || opponent.GetAction() == 470)
                     {
                         terry.SetAction(930);
                         terry.SetAnimation("Get Hit in the Chin");
                         terry.SetAttackingFalse();
 
-                        //efeito de empurr�o
+                        //efeito de empurrão
                         if (terry.GetFacingRight())
                         {
-                            //efeito de empurr�o
+                            //efeito de empurrão
                             rb.AddForce(new Vector2(-20, 0), ForceMode2D.Impulse);
 
                             //instanciando efeito na tela
@@ -1017,7 +1058,7 @@ public class TerryController : GenericCharacter
                         }
                         else
                         {
-                            //efeito de empurr�o
+                            //efeito de empurrão
                             rb.AddForce(new Vector2(20, 0), ForceMode2D.Impulse);
 
                             //instanciando efeito na tela
@@ -1025,10 +1066,10 @@ public class TerryController : GenericCharacter
                         }
 
                         //oponente
-                        oDamageable.SetDamage(4, 0, 0, 20);//mudando anima��o e empurrando o oponente
+                        oDamageable.SetDamage(4, 0, 0, 20);//mudando animação e empurrando o oponente
                         opponent.SetAttackingFalse();
                         
-                        //mudando o estado do personagem para n�o atacando
+                        //mudando o estado do personagem para não atacando
                         attackControl.SetAttacking(false);
 
                         //mudando o controle que evita loop de ataque
@@ -1037,7 +1078,7 @@ public class TerryController : GenericCharacter
                         return false;
                     }
                     
-                    else//agarr�o
+                    else//agarrão
                     {
                         terry.SetAction(460);
 
@@ -1066,7 +1107,7 @@ public class TerryController : GenericCharacter
                     }
                 }
 
-                //mudando o estado do personagem para n�o atacando
+                //mudando o estado do personagem para não atacando
                 attackControl.SetAttacking(false);
 
                 //mudando o controle que evita loop de ataque
@@ -1077,7 +1118,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //processamento do bot�o C
+    //processamento do botão C
     private bool ProcessCButton()
     {
         if (!inputController.GetButtons(4) &&
@@ -1105,6 +1146,8 @@ public class TerryController : GenericCharacter
 
                     terry.SetAction(730);
                     terry.SetAnimation("Buster Wolf Start");
+
+                    return true;
                 }
 
                 //verificar Crack Shoot
@@ -1131,7 +1174,7 @@ public class TerryController : GenericCharacter
                     return true;
                 }
                 
-                //verificando qual a��o deve ser executada
+                //verificando qual ação deve ser executada
                 if (inputController.GetButtons(1) && CheckIfCanSwitchTo360(terry.GetAction(), terry.GetCanCancelAction()))//chute fraco agachado
                 {
                     terry.SetAction(360);
@@ -1147,7 +1190,7 @@ public class TerryController : GenericCharacter
                     return true;
                 }
 
-                if (CheckIfCanSwitchTo320(terry.GetAction(), terry.GetCanCancelAction()))//chute fraco em p�
+                if (CheckIfCanSwitchTo320(terry.GetAction(), terry.GetCanCancelAction()))//chute fraco em pé
                 {
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
@@ -1158,7 +1201,7 @@ public class TerryController : GenericCharacter
                     return true;
                 }
 
-                //mudando o estado do personagem para n�o atacando
+                //mudando o estado do personagem para não atacando
                 attackControl.SetAttacking(false);
 
                 //mudando o controle que evita loop de ataque
@@ -1169,7 +1212,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //processamento do bot�o D
+    //processamento do botão D
     private bool ProcessDButton()
     {
         if (!inputController.GetButtons(4) &&
@@ -1197,6 +1240,8 @@ public class TerryController : GenericCharacter
 
                     terry.SetAction(730);
                     terry.SetAnimation("Buster Wolf Start");
+
+                    return true;
                 }
 
                 //verificar Crack Shoot
@@ -1238,22 +1283,22 @@ public class TerryController : GenericCharacter
                     return true;
                 }
 
-                //agarr�o: direcional para frente e chute forte
+                //agarrão: direcional para frente e chute forte
                 if (CheckIfCanSwitchTo460Or470(terry.GetAction()) &&
                     (terry.GetFacingRight() && inputController.GetButtons(2) || !terry.GetFacingRight() && inputController.GetButtons(0)) &&
                     opponent.GetGrounded() && Mathf.Abs(terry.GetOTransformX() - transform.position.x) < 3.5)
                 {
-                    //se o outro personagem tambem der um comando para agarrar
+                    //se o outro personagem também der um comando para agarrar
                     if (opponent.GetAction() == 460 || opponent.GetAction() == 470)
                     {
                         terry.SetAction(930);
                         terry.SetAnimation("Get Hit in the Chin");
                         terry.SetAttackingFalse();
 
-                        //efeito de empurr�o
+                        //efeito de empurrão
                         if (terry.GetFacingRight())
                         {
-                            //efeito de empurr�o
+                            //efeito de empurrão
                             rb.AddForce(new Vector2(-20, 0), ForceMode2D.Impulse);
 
                             //instanciando efeito na tela
@@ -1262,7 +1307,7 @@ public class TerryController : GenericCharacter
                         }
                         else
                         {
-                            //efeito de empurr�o
+                            //efeito de empurrão
                             rb.AddForce(new Vector2(20, 0), ForceMode2D.Impulse);
 
                             //instanciando efeito na tela
@@ -1271,10 +1316,10 @@ public class TerryController : GenericCharacter
                         }
 
                         //oponente
-                        oDamageable.SetDamage(4, 0, 0, 20);//mudando anima��o e empurrando o oponente
+                        oDamageable.SetDamage(4, 0, 0, 20);//mudando animação e empurrando o oponente
                         opponent.SetAttackingFalse();
 
-                        //mudando o estado do personagem para n�o atacando
+                        //mudando o estado do personagem para não atacando
                         attackControl.SetAttacking(false);
 
                         //mudando o controle que evita loop de ataque
@@ -1282,7 +1327,7 @@ public class TerryController : GenericCharacter
 
                         return false;
                     }
-                    else//agarr�o
+                    else//agarrão
                     {
                         terry.SetAction(470);
 
@@ -1311,7 +1356,7 @@ public class TerryController : GenericCharacter
                     }
                 }
                 
-                //mudando o estado do personagem para n�o atacando
+                //mudando o estado do personagem para não atacando
                 attackControl.SetAttacking(false);
 
                 //mudando o controle que evita loop de ataque
@@ -1324,7 +1369,7 @@ public class TerryController : GenericCharacter
     
     /////////////////// Golpes de Comando ///////////////////
 
-    //metodo que vai verificar se o player inseriu o comando de meia lua para frente e o bot�o de a��o corretamente
+    //método que vai verificar se o player inseriu o comando de meia lua para frente e o botão de ação corretamente
     private bool CheckCommand1(int button)
     {
         if(terry.GetFacingRight())
@@ -1361,7 +1406,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo que vai verificar se o player inseriu o comando de meia lua para tras e o bot�o de a��o corretamente
+    //método que vai verificar se o player inseriu o comando de meia lua para trás e o botão de ação corretamente
     private bool CheckCommand2(int button)
     {
         if (terry.GetFacingRight())
@@ -1398,7 +1443,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo que vai verificar se o player inseriu o comando c para frente e o bot�o de a��o corretamente
+    //método que vai verificar se o player inseriu o comando c para frente e o botão de ação corretamente
     private bool CheckCommand3(int button)
     {
         if (terry.GetFacingRight())
@@ -1447,7 +1492,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo que vai verificar se o player inseriu o comando (segurar) baixo + cima + bot�o de a��o corretamente
+    //método que vai verificar se o player inseriu o comando (segurar) baixo + cima + botão de ação corretamente
     private bool CheckCommand4(int button)
     {
         if (inputController.GetBtDownImputs(button, 4) - inputController.GetBtDownImputs(3, 4) > -0.045f &&
@@ -1466,7 +1511,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo que vai verificar se o player inseriu o comando do power geyser corretamente
+    //método que vai verificar se o player inseriu o comando do power geyser corretamente
     private bool CheckCommand5(int button)
     {
         if (terry.GetFacingRight())
@@ -1522,7 +1567,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo que vai verificar se o player inseriu o comando de duas meia lua para frente e o bot�o de a��o corretamente
+    //método que vai verificar se o player inseriu o comando de duas meia lua para frente e o botão de ação corretamente
     private bool CheckCommand6(int button)
     {
         if (terry.GetFacingRight())
@@ -1602,14 +1647,14 @@ public class TerryController : GenericCharacter
 
     //////////////////// VERIFICADORES ////////////////////
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o active pow
+    //método responsável por verificar se o personagem pode mudar para a ação active pow
     private bool CheckIfCanSwitchTo170(int action, bool canCancelAction)
     {
         if (action == 0 || action == 310 || action == 320)
         {
             return true;
         }
-        //if(canCancelAction || action == )//a��es que podem ser canceladas
+        //if(canCancelAction || action == )//ações que podem ser canceladas
         //{
             //return true;
         //}
@@ -1617,7 +1662,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o weak punch
+    //método responsável por verificar se o personagem pode mudar para a ação weak punch
     private bool CheckIfCanSwitchTo300(int action, bool canCancelAction)
     {
         if (action == 0 || action == 12 || action == 20 || action == 30 || action == 90 || action == 91 || action == 92)
@@ -1628,7 +1673,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o strong punch
+    //método responsável por verificar se o personagem pode mudar para a ação strong punch
     private bool CheckIfCanSwitchTo310(int action, bool canCancelAction)
     {
         if (action == 0 || action == 12 || action == 20 || action == 30 || action == 90 || action == 91 || action == 92)
@@ -1639,7 +1684,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o weak kick
+    //método responsável por verificar se o personagem pode mudar para a ação weak kick
     private bool CheckIfCanSwitchTo320(int action, bool canCancelAction)
     {
         if (action == 0 || action == 12 || action == 20 || action == 30 || action == 90 || action == 91 || action == 92)
@@ -1650,7 +1695,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o strong kick
+    //método responsável por verificar se o personagem pode mudar para a ação strong kick
     private bool CheckIfCanSwitchTo330(int action, bool canCancelAction)
     {
         if (action == 0 || action == 12 || action == 20 || action == 30 || action == 90 || action == 91 || action == 92)
@@ -1661,7 +1706,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Crouched weak punch
+    //método responsável por verificar se o personagem pode mudar para a ação Crouched weak punch
     private bool CheckIfCanSwitchTo340(int action, bool canCancelAction)
     {
         if (action == 10 || action == 11)
@@ -1672,7 +1717,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Crouched strong punch
+    //método responsável por verificar se o personagem pode mudar para a ação Crouched strong punch
     private bool CheckIfCanSwitchTo350(int action, bool canCancelAction)
     {
         if (action == 10 || action == 11)
@@ -1683,7 +1728,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Crouched weak kick
+    //método responsável por verificar se o personagem pode mudar para a ação Crouched weak kick
     private bool CheckIfCanSwitchTo360(int action, bool canCancelAction)
     {
         if (action == 10 || action == 11)
@@ -1694,7 +1739,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Crouched Strong kick
+    //método responsável por verificar se o personagem pode mudar para a ação Crouched Strong kick
     private bool CheckIfCanSwitchTo370(int action, bool canCancelAction)
     {
         if (action == 10 || action == 11)
@@ -1705,7 +1750,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Jumping weak punch
+    //método responsável por verificar se o personagem pode mudar para a ação Jumping weak punch
     private bool CheckIfCanSwitchTo380(int action, bool canCancelAction)
     {
         if (action == 41 || action == 42 || action == 43 || action == 61 || action == 62 || action == 81 || action == 82)
@@ -1716,7 +1761,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Jumping Strong punch
+    //método responsável por verificar se o personagem pode mudar para a ação Jumping Strong punch
     private bool CheckIfCanSwitchTo390(int action, bool canCancelAction)
     {
         if (action == 41 || action == 42 || action == 43 || action == 61 || action == 62 || action == 81 || action == 82)
@@ -1727,7 +1772,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Jumping weak kick
+    //método responsável por verificar se o personagem pode mudar para a ação Jumping weak kick
     private bool CheckIfCanSwitchTo400(int action, bool canCancelAction)
     {
         if (action == 41 || action == 42 || action == 43 || action == 61 || action == 62 || action == 81 || action == 82)
@@ -1738,7 +1783,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Jumping Strong kick
+    //método responsável por verificar se o personagem pode mudar para a ação Jumping Strong kick
     private bool CheckIfCanSwitchTo410(int action, bool canCancelAction)
     {
         if (action == 41 || action == 42 || action == 43 || action == 61 || action == 62 || action == 81 || action == 82)
@@ -1749,7 +1794,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Special Attack
+    //método responsável por verificar se o personagem pode mudar para a ação Special Attack
     public override bool CheckIfCanSwitchTo440(int action, bool canCancelAction)
     {
         if (action == 0 || action == 310 || action == 330)
@@ -1760,7 +1805,7 @@ public class TerryController : GenericCharacter
         return true;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Jumping Special Attack
+    //método responsável por verificar se o personagem pode mudar para a ação Jumping Special Attack
     public override bool CheckIfCanSwitchTo450(int action, bool canCancelAction)
     {
         if (action == 41 || action == 42 || action == 43 || action == 61 || action == 62 || action == 81 || action == 82 || action == 390 || action == 410)
@@ -1771,7 +1816,7 @@ public class TerryController : GenericCharacter
         return false;
     }
     
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Grab and throw forward
+    //método responsável por verificar se o personagem pode mudar para a ação Grab and throw forward
     private bool CheckIfCanSwitchTo460Or470(int action)
     {
         if ((action == 0 || action == 20) && opponent.GetAction() < 900)
@@ -1782,7 +1827,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Weak Punch Forward
+    //método responsável por verificar se o personagem pode mudar para a ação Weak Punch Forward
     private bool CheckIfCanSwitchTo600(int action, bool canCancelAction)
     {
         if (action == 0 || action == 20)
@@ -1793,7 +1838,7 @@ public class TerryController : GenericCharacter
         return false;
     }
     
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Rising Upper
+    //método responsável por verificar se o personagem pode mudar para a ação Rising Upper
     private bool CheckIfCanSwitchTo610(int action, bool canCancelAction)
     {
         if (action == 10 || action == 11 || action == 12 || action == 20 || action == 310 || action == 350 || action == 460)
@@ -1804,7 +1849,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o power wave
+    //método responsável por verificar se o personagem pode mudar para a ação power wave
     private bool CheckIfCanSwitchTo620(int action, bool canCancelAction)
     {
         if(action == 0 || action == 10 || action == 11 || action == 12 || action == 20 || action == 300 )
@@ -1815,7 +1860,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o round wave
+    //método responsável por verificar se o personagem pode mudar para a ação round wave
     private bool CheckIfCanSwitchTo630(int action, bool canCancelAction)
     {
         if (action == 0 || action == 10 || action == 11 || action == 12 || action == 20 || action == 310)
@@ -1827,7 +1872,7 @@ public class TerryController : GenericCharacter
     }
 
 
-    //metodo responsavel por verificar se o personagem pode mudar para crack shoot fraco
+    //método responsável por verificar se o personagem pode mudar para crack shoot fraco
     private bool CheckIfCanSwitchTo640(int action, bool canCancelAction)
     {
         if (action == 0 || action == 10 || action == 11 || action == 12 || action == 30 || action == 320)
@@ -1838,7 +1883,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para crack shoot forte
+    //método responsável por verificar se o personagem pode mudar para crack shoot forte
     private bool CheckIfCanSwitchTo650(int action, bool canCancelAction)
     {
         if (action == 0 || action == 10 || action == 11 || action == 12 || action == 30 || action == 330)
@@ -1849,7 +1894,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Power Dunk
+    //método responsável por verificar se o personagem pode mudar para a ação Power Dunk
     private bool CheckIfCanSwitchTo660(int action, bool canCancelAction)
     {
         if (action == 0 || action == 10 || action == 11 || action == 12 || action == 20 || action == 300)
@@ -1860,7 +1905,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Power Dunk
+    //método responsável por verificar se o personagem pode mudar para a ação Power Dunk
     private bool CheckIfCanSwitchTo670(int action, bool canCancelAction)
     {
         if (action == 0 || action == 10 || action == 11 || action == 12 || action == 20 || action == 310)
@@ -1871,7 +1916,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Burn Knuckle
+    //método responsável por verificar se o personagem pode mudar para a ação Burning Knuckle
     private bool CheckIfCanSwitchTo680(int action, bool canCancelAction)
     {
         if (action == 0 || action == 10 || action == 11 || action == 12 || action == 30 || action == 300)
@@ -1882,7 +1927,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Burn Knuckle
+    //método responsável por verificar se o personagem pode mudar para a ação Burning Knuckle
     private bool CheckIfCanSwitchTo690(int action, bool canCancelAction)
     {
         if (action == 0 || action == 10 || action == 11 || action == 12 || action == 30 || action == 310)
@@ -1893,7 +1938,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Rising Tackle
+    //método responsável por verificar se o personagem pode mudar para a ação Rising Tackle
     private bool CheckIfCanSwitchTo700(int action, bool canCancelAction)
     {
         if (action == 0 || action == 10 || action == 11 || action == 12 || action == 300)
@@ -1904,7 +1949,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Rising Tackle
+    //método responsável por verificar se o personagem pode mudar para a ação Rising Tackle
     private bool CheckIfCanSwitchTo710(int action, bool canCancelAction)
     {
         if (action == 0 || action == 10 || action == 11 || action == 12 || action == 310)
@@ -1915,7 +1960,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Power Geyser
+    //método responsável por verificar se o personagem pode mudar para a ação Power Geyser
     private bool CheckIfCanSwitchTo720(int action, bool canCancelAction)
     {
         if ( action == 10 || action == 11 || action == 12 || action == 20 || action == 30 || action == 300 || action == 310)
@@ -1926,7 +1971,7 @@ public class TerryController : GenericCharacter
         return false;
     }
 
-    //metodo responsavel por verificar se o personagem pode mudar para a a��o Buster Wolf
+    //método responsável por verificar se o personagem pode mudar para a ação Buster Wolf
     private bool CheckIfCanSwitchTo730(int action, bool canCancelAction)
     {
         if (action == 10 || action == 11 || action == 12 || action == 20 || action == 320 || action == 330)

@@ -47,15 +47,15 @@ public class MatchController : MonoBehaviour
     {
         //verifica se o player 1 precisa virar para o outro lado
         if (p1Controler.GetFacingRight() && //esta virado para a direita
-            p1Trasnform.position.x > p2Trasnform.position.x && //est· a direita do p2
-            p1Controler.GetAction() != 150 && p1Controler.GetAction() != 151 && //a aÁ„o n„o È mudando de lado
+            p1Trasnform.position.x > p2Trasnform.position.x && //est√° a direita do p2
+            p1Controler.GetAction() != 150 && p1Controler.GetAction() != 151 && //a a√ß√£o n√£o √© mudando de lado
             p1Controler.GetAction() != 160 && p1Controler.GetAction() != 161)
         {
             p1Controler.SetCommandToChangeSide();//gerando comando para mudar de lado
         }
         if (!p1Controler.GetFacingRight() && //esta virado para a direita
-             p1Trasnform.position.x < p2Trasnform.position.x && //est· a esquerda do p2
-             p1Controler.GetAction() != 150 && p1Controler.GetAction() != 151 && //a aÁ„o n„o È mudando de lado
+             p1Trasnform.position.x < p2Trasnform.position.x && //est√° a esquerda do p2
+             p1Controler.GetAction() != 150 && p1Controler.GetAction() != 151 && //a a√ß√£o n√£o √© mudando de lado
              p1Controler.GetAction() != 160 && p1Controler.GetAction() != 161)
         {
             p1Controler.SetCommandToChangeSide();//gerando comando para mudar de lado
@@ -63,22 +63,22 @@ public class MatchController : MonoBehaviour
 
         //verifica se o player 2 precisa virar para o outro lado
         if (p2Controler.GetFacingRight() && //esta virado para a direita
-            p2Trasnform.position.x > p1Trasnform.position.x && //est· a direita do p2
-            p2Controler.GetAction() != 150 && p2Controler.GetAction() != 151 && //a aÁ„o n„o È mudando de lado
+            p2Trasnform.position.x > p1Trasnform.position.x && //est√° a direita do p2
+            p2Controler.GetAction() != 150 && p2Controler.GetAction() != 151 && //a a√ß√£o n√£o √© mudando de lado
             p2Controler.GetAction() != 160 && p2Controler.GetAction() != 161)
         {
             p2Controler.SetCommandToChangeSide();//gerando comando para mudar de lado
         }
         if (!p2Controler.GetFacingRight() && //esta virado para a direita
-             p2Trasnform.position.x < p1Trasnform.position.x && //est· a esquerda do p2
-             p2Controler.GetAction() != 150 && p2Controler.GetAction() != 151 && //a aÁ„o n„o È mudando de lado
+             p2Trasnform.position.x < p1Trasnform.position.x && //est√° a esquerda do p2
+             p2Controler.GetAction() != 150 && p2Controler.GetAction() != 151 && //a a√ß√£o n√£o √© mudando de lado
              p2Controler.GetAction() != 160 && p2Controler.GetAction() != 161)
         {
             p2Controler.SetCommandToChangeSide();//gerando comando para mudar de lado
         }
     }
     
-    //metodo que vai alterar a ordem das cadas
+    //m√©todo que vai alterar a ordem das camadas
     public void SetLastHit(bool value)
     {
         p1LastHit = value;

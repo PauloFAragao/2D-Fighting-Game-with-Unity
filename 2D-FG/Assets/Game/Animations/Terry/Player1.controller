@@ -1137,7 +1137,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Strong Burnig Knuckle Cicle
+  m_Name: Strong Burning Knuckle Cicle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -1163,7 +1163,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Weak Burnig Knuckle Cicle
+  m_Name: Weak Burning Knuckle Cicle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -1657,7 +1657,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Strong Burnig Knuckle
+  m_Name: Strong Burning Knuckle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -3213,7 +3213,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Weak Burnig Knuckle
+  m_Name: Weak Burning Knuckle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
