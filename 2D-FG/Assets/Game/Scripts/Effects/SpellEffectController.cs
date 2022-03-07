@@ -62,7 +62,7 @@ public class SpellEffectController : MonoBehaviour
     }
 
     //recebendo dados de direção e qual personagem acertar
-    public void SetData(bool direction, bool player)
+    public virtual void SetData(bool direction, bool player)
     {
         rightDirection = direction;
         player1 = player;
@@ -77,7 +77,23 @@ public class SpellEffectController : MonoBehaviour
         }
     }
     
+    public void DestroyMe()
+    {
+        if(player1)
+        {
+            //mudando o status de atacando para falso
+            GameObject.FindWithTag("Player1").GetComponentInChildren<AttackControl>().SetAttacking(false);
+        }
+        else 
+        {
+            //mudando o status de atacando para falso
+            GameObject.FindWithTag("Player2").GetComponentInChildren<AttackControl>().SetAttacking(false);
+        }
 
+        //Destroy(gameObject, 0);
+
+        gameObject.SetActive(false);
+    }
 
     //método que vai mudar o estado dessa magia
     public virtual void SetState(){ }// <<<<<<<<<< Essemétodo precisa ser re-escrito na classe que herda
@@ -100,5 +116,15 @@ public class SpellEffectController : MonoBehaviour
     public void SetVelZero()
     {
         rb.velocity = Vector2.zero;
+    }
+
+    public void SetRightDirection(bool direction)
+    {
+        rightDirection = direction;
+    }
+
+    public void SetPlayer(bool value)
+    {
+        player1 = value;
     }
 }

@@ -4,6 +4,7 @@ Versão: 0.6
 -Implementadas alterações nos nomes dos botões do player 1
 -Comportamento da camera implementado sem usar o cinemachine
 -Implementado o attackControl do player2
+-Implementado um pull de spells para evitar mais de uma magia ativa ao mesmo tempo
 
 -Correção de bugs
 	-Corrigido um bug no efeito de poeira e no efeito de pancada no chão que instanciavam na posição errada no eixo Y
@@ -12,9 +13,10 @@ Versão: 0.6
 	-Corrigido um bug em que o personagem não entrava em defesa quando estava andando de costas e o oponente ataca
 	-Corrigido um bug no método que muda as ações, ele estava guardando o tempo de forma errada no histórico
 	-Corrigido um bug na ação Burning Knuckle, as animações estavam setadas para ciclar
-	-Diversas correções nos ataques que não estavam mudando o comportamento de atacado para não atacando (os ataques que usam
+	-Diversas correções nos ataques que não estavam mudando o comportamento de atacando para não atacando (os ataques que usam
 	algum tipo de projétil ainda estão com problema)
 	-Encontrado o motivo do bug no começo de Buster Wolf, foi implementada uma solução temporária.
+	-Corrigidas os ataques (projeteis) que não mudavam o comportamento de atacando
 
 Versão: 0.5
 -Implementadas mais alterações para que seja possível a criação de novos personagens

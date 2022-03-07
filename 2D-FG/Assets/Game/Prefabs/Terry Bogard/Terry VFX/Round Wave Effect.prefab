@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 7124791697857793922}
   - component: {fileID: 7124791697857793923}
   - component: {fileID: 6821579600042400304}
-  - component: {fileID: 5649270038946036417}
   - component: {fileID: 8617607182957301590}
   m_Layer: 0
   m_Name: Round Wave Effect
@@ -241,18 +240,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
---- !u!114 &5649270038946036417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7124791697857793920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51c2018ec505eb3478bea1afe0609bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8617607182957301590
 MonoBehaviour:
   m_ObjectHideFlags: 0

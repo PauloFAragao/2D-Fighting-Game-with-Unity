@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    //objetos de referencia
+//objetos de referencia
     private InputController ic;
     private Rigidbody2D rb;
     private Animator anim;
@@ -23,24 +23,22 @@ public class PlayerController : MonoBehaviour {
     private Animator oAnim;                             //referencia ao animator do oponente
     private Damageable oDamageable;                     //referencia ao Damageable do oponente
 
-    public Transform dustEffectSpawn;                    //referencia ao ponto de spawn
+    public Transform dustEffectSpawn;                   //referencia ao ponto de spawn
 
     //prefabs
     public GameObject dustEffectPrefab;                 //prefab da poeria do pulo
     
     public GameObject hitOnFlorEffectPrefab;            //prefab do efeito de ser jogado no chão
     
-    //variaveis de indicação
+//variaveis de indicação
     [SerializeField] private bool player1;
 
     private float[] changedActionMoment = new float[5];     //guarda o tempo em que mudou a ultima ação
     private int[] lastActions = new int[5];                 //guarda as ultimas ações do personagem
 
-    //private int attackCommandTime;                        //guarda o tempo em que foi feito o comando de ataque
-
-    public int characterIndex;                              //qual é o personagem que vai começar
+    public int characterIndex;                              //qual é o personagem que vai ser usado
     
-    //variaveis de controle do personagem
+//variaveis de controle do personagem
     public float walkSpeed;             //velocidade do personagem ao andar
     public float runSpeed;              //velocidade do personagem ao correr
     public float rollinSpeed;           //velocidade do rolamento
@@ -50,7 +48,7 @@ public class PlayerController : MonoBehaviour {
     
     private bool canCancelAction;       //variavel para indicar que a ação atual pode ser cancelada por outra ação especifica
     
-    //variaveis de estado do personagem
+//variaveis de estado do personagem
     [SerializeField]private int action = 0;             //guarda a ação que o personagem está executando no momento
     
     private bool grounded = true;       //para verificar se o personagem está no chão
@@ -64,7 +62,7 @@ public class PlayerController : MonoBehaviour {
     private bool powActived;            //indica que o pow está ativo
     private int powActiveTime;          //indica o momento que o pow foi ativo
 
-    //variaveis de comando
+//variaveis de comando
     private bool commandToChangeSide;   //indica que o personagem tem que mudar de lado assim que possível
     private bool stunCommand;           //indica que o personagem sofreu um stun e tem que mudar para a ação de stun assim q possível
     private bool jump;                  //sinaliza que a animação de preparação para o pulo já terminou
@@ -1704,9 +1702,14 @@ public class PlayerController : MonoBehaviour {
         commandToChangeSide = true;
     }
 
+    //método que vai mudar o estado de atacando para falso
     public void SetAttackingFalse()
     {
-        attackControl.SetAttacking(false);
+        //verifica se tem alguma spell ativa antes de mudar o estado de atacando
+        if(!characterController.CheckIfHaveActiveSpell())
+        {
+            attackControl.SetAttacking(false);
+        }
     }
 
     public bool GetPlayer1()

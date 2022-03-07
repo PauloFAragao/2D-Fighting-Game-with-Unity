@@ -657,7 +657,7 @@ MonoBehaviour:
   powerGeyserEffectPrefab: {fileID: 4567536940670688605, guid: 729501ced1794d041b7a2f1e0c44378a, type: 3}
   EspecialEffectPrefab: {fileID: 8714914228604283542, guid: 8935c5091d16fe24daf10898a03f87a6, type: 3}
   roundWaveVelocity: 15
-  weakBurningKnuckleVelocity: 18
+  weakBurningKnuckleVelocity: 20
   strongBurningKnuckleVelocity: 22
 --- !u!1 &4432341957221425936
 GameObject:

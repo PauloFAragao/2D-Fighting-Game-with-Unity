@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class PowerWaveEffectController : SpellEffectController
 {
+
+    public override void SetData(bool direction, bool player)
+    {
+        SetRightDirection(direction);
+        SetPlayer(player);
+
+        SetStateCicle(true);
+
+        if (direction)
+        {
+            transform.Rotate(new Vector3(0, 0, 0));
+        }
+        else
+        {
+            transform.Rotate(new Vector3(0, 180, 0));
+        }
+    }
+
+
     //método que vai ser chamado para causar dano
     public override void DoDamage(Collider2D collision)
     {

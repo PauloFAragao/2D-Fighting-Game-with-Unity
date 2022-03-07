@@ -3,11 +3,15 @@
 -Implementar camera se mover pelo cenário - implementado
 	foi implementado o comportamento da camera mais sem usar o cinemachine
 
+-Implementar um pool de spells - implementado
+
+-Implementar um pool para os outros efeitos
+
 -Implementar o efeito do hit na defesa
 
 -Terminar de implementar o sistema de empurrar e ser empurrado quando acerta o golpe
 
--Implementar otimizações tirando redundância de todo o código 
+-Implementar otimizações tirando redundância de todo o código
 
 -implementar a interface
 
@@ -15,3 +19,6 @@
 
 -Verificar a possibilidade de implementar frames positivos e negativos ou implementar golpes 
 que podem ser cancelados
+
+
+

@@ -46,4 +46,7 @@ public class GenericCharacter : MonoBehaviour
         return attackCommandTime;
     }
 
+    public virtual bool CheckIfHaveActiveSpell()// <<<<<<<<<< Esse método precisa ser re-escrito na classe que herda
+    { return false; }
+
 }

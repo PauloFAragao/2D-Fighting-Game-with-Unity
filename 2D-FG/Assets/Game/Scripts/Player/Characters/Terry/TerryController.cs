@@ -4,25 +4,20 @@ using UnityEngine;
 
 public class TerryController : GenericCharacter
 {
-    //referencias
-    private PlayerController terry;             //referencia a classe PlayerController do personagem
+//referencias
+    private PlayerController terry;                             //referencia a classe PlayerController do personagem
+    private InputController inputController;                    //referencia ao InputController do personagem
+    private AttackControl attackControl;                        //referencia ao AttackControl do personagem
+    private Rigidbody2D rb;                                     //referencia ao Rigidbody2D do personagem
 
-    private InputController inputController;    //referencia ao InputController do personagem
-    private AttackControl attackControl;        //referencia ao AttackControl do personagem
-    private Rigidbody2D rb;                     //referencia ao Rigidbody2D do personagem
-
-    private PlayerController opponent;          //referencia a classe PlayerController do oponente
-    private Damageable oDamageable;             //referencia a classe Damageable do oponente
-
-    public Transform EffectSpawner;             //referencia para o transform que vai ser usado como ponto de spawn do prefab
-
-    //prefabs
-    public GameObject powerWaveEffectPrefab;    //prefab do efeito do Power Wave
-    public GameObject roundWaveEffectPrefab;    //prefab do efeito do Round Wave
-
-    public GameObject powerGeyserEffectPrefab;  //prefab do efeito do Power Geyser
+    private PlayerController opponent;                          //referencia a classe PlayerController do oponente
+    private Damageable oDamageable;                             //referencia a classe Damageable do oponente
+    public Transform EffectSpawner;                             //referencia para o transform que vai ser usado como ponto de spawn do prefab
     
-    public GameObject EspecialEffectPrefab;     //prefab do efeito de especial
+    //prefabs
+    [SerializeField] private TerrySpellPool terrySpellPool;     //referencia para o poll de spells
+
+    public GameObject EspecialEffectPrefab;                     //prefab do efeito de especial
 
     //variaveis de controle
     [SerializeField] private float roundWaveVelocity;           //velocidade de movimento durante o round wave
@@ -792,25 +787,19 @@ public class TerryController : GenericCharacter
     //método que vai ser chamando para instanciar o projétil do power wave
     public void InstantiatePowerWeaveEffect()
     {
-        GameObject pw = Instantiate( powerWaveEffectPrefab, EffectSpawner.position, new Quaternion(0, 0, 0, 0) );
-
-        pw.GetComponent<PowerWaveEffectController>().SetData(terry.GetFacingRight(), terry.GetPlayer1());
+        terrySpellPool.GetSpell(1, EffectSpawner.position).GetComponent<PowerWaveEffectController>().SetData(terry.GetFacingRight(), terry.GetPlayer1());
     }
 
     //método que vai ser chamando para instanciar o efeito do round wave
     public void InstantiateRoundWeaveEffect()
     {
-        GameObject rw = Instantiate(roundWaveEffectPrefab, EffectSpawner.position, new Quaternion(0, 0, 0, 0));
-
-        rw.GetComponent<RoundWaveEffectController>().SetData(terry.GetFacingRight(), terry.GetPlayer1());
+        terrySpellPool.GetSpell(2, EffectSpawner.position).GetComponent<RoundWaveEffectController>().SetData(terry.GetFacingRight(), terry.GetPlayer1());
     }
 
     //método que vai ser chamando para instanciar o efeito do Power Geyser
     public void InstantiatePowerGeyser()
     {
-        GameObject pg = Instantiate(powerGeyserEffectPrefab, EffectSpawner.position, new Quaternion(0, 0, 0, 0));
-
-        pg.GetComponent<PowerGeyserEffectController>().SetData(terry.GetFacingRight(), terry.GetPlayer1());
+        terrySpellPool.GetSpell(0, EffectSpawner.position).GetComponent<PowerGeyserEffectController>().SetData(terry.GetFacingRight(), terry.GetPlayer1());
     }
 
     //método que vai ajustar a posição do personagem em X
@@ -1852,9 +1841,13 @@ public class TerryController : GenericCharacter
     //método responsável por verificar se o personagem pode mudar para a ação power wave
     private bool CheckIfCanSwitchTo620(int action, bool canCancelAction)
     {
-        if(action == 0 || action == 10 || action == 11 || action == 12 || action == 20 || action == 300 )
+        //verifica se já tem um power wave ativo e se tiver não permite usar outro
+        if(!terrySpellPool.VerifySpecificSpell(1))
         {
-            return true;
+            if( action == 0 || action == 10 || action == 11 || action == 12 || action == 20 || action == 300 )
+            {
+                return true;
+            }
         }
 
         return false;
@@ -1980,6 +1973,12 @@ public class TerryController : GenericCharacter
         }
 
         return false;
+    }
+
+    //método responsável por verificar se o personagem tem alguma spell ativa
+    public override bool CheckIfHaveActiveSpell()
+    {
+        return terrySpellPool.VerifyActiveSpell();
     }
 
 }
