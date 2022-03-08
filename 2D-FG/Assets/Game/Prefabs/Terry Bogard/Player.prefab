@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6da430ed5f731542bc0e4021568c246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackControl: {fileID: 904880078400969499}
+  attackControl: {fileID: 4432341955992311662}
 --- !u!1 &1317686290
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6da430ed5f731542bc0e4021568c246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackControl: {fileID: 904880078400969499}
+  attackControl: {fileID: 4432341955992311662}
 --- !u!1 &1471096719316057990
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +511,8 @@ GameObject:
   - component: {fileID: 4432341956873456525}
   - component: {fileID: 4432341956873456524}
   - component: {fileID: 7283397299566946330}
+  - component: {fileID: 4432341955992311661}
+  - component: {fileID: 4432341955992311662}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player1
@@ -652,13 +654,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EffectSpawner: {fileID: 1492426523}
-  powerWaveEffectPrefab: {fileID: 2863768423754354948, guid: 48d058d6a1adc3545b58e0eb002d36ae, type: 3}
-  roundWaveEffectPrefab: {fileID: 7124791697857793920, guid: 20e6a202701c64d4a83d15f2248565fe, type: 3}
-  powerGeyserEffectPrefab: {fileID: 4567536940670688605, guid: 729501ced1794d041b7a2f1e0c44378a, type: 3}
+  terrySpellPool: {fileID: 0}
   EspecialEffectPrefab: {fileID: 8714914228604283542, guid: 8935c5091d16fe24daf10898a03f87a6, type: 3}
   roundWaveVelocity: 15
   weakBurningKnuckleVelocity: 20
   strongBurningKnuckleVelocity: 22
+--- !u!114 &4432341955992311661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432341956873456521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7d97a9c943ab547b9b887edae99a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pController: {fileID: 4432341956873456524}
+  rb: {fileID: 4432341956873456515}
+  maxLifePoints: 1000
+--- !u!114 &4432341955992311662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432341956873456521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce5219718998b846b4a3f42480e66c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pController: {fileID: 4432341956873456524}
+  hitEffectPrefab: {fileID: 6795232661114117624, guid: fccd9730c9b168a4597614896ef4cd93, type: 3}
+  hitEffectSpaw: {fileID: 1492426523}
+  Mc: {fileID: 0}
 --- !u!1 &4432341957221425936
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9148282474899264009}
-  - component: {fileID: 4432341955992311661}
+  - component: {fileID: 8492052731928175951}
   m_Layer: 7
   m_Name: ExtraHurtBox
   m_TagString: Untagged
@@ -950,7 +981,7 @@ Transform:
   m_Father: {fileID: 4456030033032333759}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &4432341955992311661
+--- !u!61 &8492052731928175951
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -985,7 +1016,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4456030033032333759}
-  - component: {fileID: 6435007725952290067}
   m_Layer: 7
   m_Name: HurtBoxes
   m_TagString: Untagged
@@ -1012,21 +1042,6 @@ Transform:
   m_Father: {fileID: 4432341956873456526}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6435007725952290067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8572155330352100642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd7d97a9c943ab547b9b887edae99a16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pController: {fileID: 4432341956873456524}
-  rb: {fileID: 4432341956873456515}
-  maxLifePoints: 1000
 --- !u!1 &8900549031348684333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,7 +1051,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3667619574302035298}
-  - component: {fileID: 904880078400969499}
   m_Layer: 7
   m_Name: HitBox
   m_TagString: Untagged
@@ -1061,22 +1075,6 @@ Transform:
   m_Father: {fileID: 4432341956873456526}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &904880078400969499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8900549031348684333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce5219718998b846b4a3f42480e66c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pController: {fileID: 4432341956873456524}
-  hitEffectPrefab: {fileID: 6795232661114117624, guid: fccd9730c9b168a4597614896ef4cd93, type: 3}
-  hitEffectSpaw: {fileID: 1492426523}
-  Mc: {fileID: 0}
 --- !u!1 &9088360524581588989
 GameObject:
   m_ObjectHideFlags: 0

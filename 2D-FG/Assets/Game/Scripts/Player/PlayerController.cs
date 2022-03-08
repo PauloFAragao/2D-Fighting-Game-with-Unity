@@ -8,10 +8,9 @@ public class PlayerController : MonoBehaviour {
     private InputController ic;
     private Rigidbody2D rb;
     private Animator anim;
-    
-    private GenericCharacter characterController;       //objeto da classe que vai fazer os processamentos específicos do personagem
+    private AttackControl attackControl;
 
-    private AttackControl attackControl;                //referencia ao objeto da classe AttackControl atrelado a esse personagem
+    private GenericCharacter characterController;       //objeto da classe que vai fazer os processamentos específicos do personagem
 
     [SerializeField] private Transform renderTrasnform; //transform do objeto render
 
@@ -25,7 +24,7 @@ public class PlayerController : MonoBehaviour {
 
     public Transform dustEffectSpawn;                   //referencia ao ponto de spawn
 
-    //prefabs
+//prefabs
     public GameObject dustEffectPrefab;                 //prefab da poeria do pulo
     
     public GameObject hitOnFlorEffectPrefab;            //prefab do efeito de ser jogado no chão
@@ -73,8 +72,7 @@ public class PlayerController : MonoBehaviour {
         ic = GetComponent<InputController>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
-        attackControl = GetComponentInChildren<AttackControl>();
+        attackControl = GetComponent<AttackControl>();
 
         //pegando referencia do outro personagem
         if (player1)
@@ -83,7 +81,7 @@ public class PlayerController : MonoBehaviour {
             oPC = GameObject.FindWithTag("Player2").GetComponent<PlayerController>();
             oTrasnform = GameObject.FindWithTag("Player2").GetComponent<Transform>();
             oAnim = GameObject.FindWithTag("Player2").GetComponent<Animator>();
-            oDamageable  = GameObject.FindWithTag("Player2").GetComponentInChildren<Damageable>();
+            oDamageable  = GameObject.FindWithTag("Player2").GetComponent<Damageable>();
         }
         else
         {
@@ -91,7 +89,7 @@ public class PlayerController : MonoBehaviour {
             oPC = GameObject.FindWithTag("Player1").GetComponent<PlayerController>();
             oTrasnform = GameObject.FindWithTag("Player1").GetComponent<Transform>();
             oAnim = GameObject.FindWithTag("Player1").GetComponent<Animator>();
-            oDamageable = GameObject.FindWithTag("Player1").GetComponentInChildren<Damageable>();
+            oDamageable = GameObject.FindWithTag("Player1").GetComponent<Damageable>();
         }
 
         //tipo de personagem

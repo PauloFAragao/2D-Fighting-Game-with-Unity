@@ -191,17 +191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d8089210b3081f4d996c28e2a413fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &434903003 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 904880078400969499, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
-  m_PrefabInstance: {fileID: 4432341955992311658}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce5219718998b846b4a3f42480e66c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +289,7 @@ PrefabInstance:
     - target: {fileID: 904880078400969499, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
       propertyPath: ed
       value: 
-      objectReference: {fileID: 1266992546}
+      objectReference: {fileID: 0}
     - target: {fileID: 904880078400969499, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
       propertyPath: pController
       value: 
@@ -324,7 +313,7 @@ PrefabInstance:
     - target: {fileID: 4432341956873456524, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
       propertyPath: enemyAC
       value: 
-      objectReference: {fileID: 434903003}
+      objectReference: {fileID: 0}
     - target: {fileID: 4432341956873456524, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
       propertyPath: player1
       value: 0
@@ -505,17 +494,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.71678543, y: 11.263883}
   m_EdgeRadius: 0
---- !u!114 &1266992546 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6435007725952290067, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
-  m_PrefabInstance: {fileID: 4432341955992311658}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd7d97a9c943ab547b9b887edae99a16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1284048672
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +828,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 904880078400969499, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
+    - target: {fileID: 4432341955992311662, guid: 1401787bde25d0c4091cf94bf29f06fc, type: 3}
       propertyPath: Mc
       value: 
       objectReference: {fileID: 1959492510}

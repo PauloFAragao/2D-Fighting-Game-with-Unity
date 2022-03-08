@@ -39,7 +39,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: médio - 2 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 20
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(2, 0, 0, 20);
+                collision.GetComponent<Damageable>().SetDamage(2, 0, 0, 20);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -49,7 +49,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: médio - 2 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 23
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(2, 0, 0, 23);
+                collision.GetComponent<Damageable>().SetDamage(2, 0, 0, 23);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -59,7 +59,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: médio - 2 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 23
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(2, 0, 0, 23);
+                collision.GetComponent<Damageable>().SetDamage(2, 0, 0, 23);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -69,7 +69,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: no queixo - 4 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(4, 0, 0, 25);
+                collision.GetComponent<Damageable>().SetDamage(4, 0, 0, 25);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -79,7 +79,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: médio - 2 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 20
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(2, 0, 0, 20);
+                collision.GetComponent<Damageable>().SetDamage(2, 0, 0, 20);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -89,7 +89,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: médio - 2 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 20
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(2, 0, 0, 20);
+                collision.GetComponent<Damageable>().SetDamage(2, 0, 0, 20);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -99,7 +99,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: baixo - 1 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 20
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(1, 0, 0, 20);
+                collision.GetComponent<Damageable>().SetDamage(1, 0, 0, 20);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -109,7 +109,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: queda - 6 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 4
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(6, 0, 0, 4);
+                collision.GetComponent<Damageable>().SetDamage(6, 0, 0, 4);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -118,32 +118,32 @@ public class AttackControl : MonoBehaviour
             else if (attackAction == 381)//soco fraco pulando
             {//tipo de dano: alto - 3 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 20
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(3, 0, 0, 20);
+                collision.GetComponent<Damageable>().SetDamage(3, 0, 0, 20);
             }
 
             else if (attackAction == 391)//soco forte pulando
             {//tipo de dano: alto - 3 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 23
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(3, 0, 0, 23);
+                collision.GetComponent<Damageable>().SetDamage(3, 0, 0, 23);
             }
 
             else if (attackAction == 401)//chute fraco pulando
             {//tipo de dano: alto - 3 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 23
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(3, 0, 0, 23);
+                collision.GetComponent<Damageable>().SetDamage(3, 0, 0, 23);
             }
 
             else if (attackAction == 411)//chute forte pulando
             {//tipo de dano: alto - 3 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(3, 0, 0, 25);
+                collision.GetComponent<Damageable>().SetDamage(3, 0, 0, 25);
             }
 
             else if (attackAction == 421)//soco forte colado
             {//tipo de dano: médio - 2 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 16
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(2, 0, 0, 16);
+                collision.GetComponent<Damageable>().SetDamage(2, 0, 0, 16);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -153,7 +153,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: no queixo - 4 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(4, 0, 0, 25);
+                collision.GetComponent<Damageable>().SetDamage(4, 0, 0, 25);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -163,7 +163,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: jogado longe - 7 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 10
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(7, 0, 0, 10);
+                collision.GetComponent<Damageable>().SetDamage(7, 0, 0, 10);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -173,7 +173,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: jogado longe - 7 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 10
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(7, 0, 0, 10);
+                collision.GetComponent<Damageable>().SetDamage(7, 0, 0, 10);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -183,7 +183,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: médio - 2 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(2, 0, 0, 30);
+                collision.GetComponent<Damageable>().SetDamage(2, 0, 0, 30);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -193,7 +193,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: no queixo - 4 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(4, 0, 0, 25);
+                collision.GetComponent<Damageable>().SetDamage(4, 0, 0, 25);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -203,7 +203,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: por cima - 5 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 15
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(5, 0, 0, 15);
+                collision.GetComponent<Damageable>().SetDamage(5, 0, 0, 15);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -213,7 +213,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: por cima - 5 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 15
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(5, 0, 0, 15);
+                collision.GetComponent<Damageable>().SetDamage(5, 0, 0, 15);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -224,7 +224,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano:  / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 15
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(0, 0, 0, 15);
+                collision.GetComponent<Damageable>().SetDamage(0, 0, 0, 15);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -234,7 +234,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano:  / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 15
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(0, 0, 0, 15);
+                collision.GetComponent<Damageable>().SetDamage(0, 0, 0, 15);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -245,7 +245,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: Knock Down - 6 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(6, 0, 0, 15);
+                collision.GetComponent<Damageable>().SetDamage(6, 0, 0, 15);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -255,7 +255,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: Knock Down - 6 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(6, 0, 0, 15);
+                collision.GetComponent<Damageable>().SetDamage(6, 0, 0, 15);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -264,7 +264,7 @@ public class AttackControl : MonoBehaviour
             else if(attackAction == 731)//buster wolf
             {//tipo de dano:Hard Knock Down Static - 9 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(9, 0, 0, 0);
+                collision.GetComponent<Damageable>().SetDamage(9, 0, 0, 0);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
@@ -277,7 +277,7 @@ public class AttackControl : MonoBehaviour
             {
                 //tipo de dano: Hard Knock Down - 7/ quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponentInChildren<Damageable>().SetDamage(7, 0, 0, 10);
+                collision.GetComponent<Damageable>().SetDamage(7, 0, 0, 10);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);

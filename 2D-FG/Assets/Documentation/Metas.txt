@@ -6,6 +6,11 @@
 -Implementar um pool de spells - implementado
 
 -Implementar um pool para os outros efeitos
+	-hit
+	-especial
+	-hit on floor
+	-dust
+	-shield
 
 -Implementar o efeito do hit na defesa
 
