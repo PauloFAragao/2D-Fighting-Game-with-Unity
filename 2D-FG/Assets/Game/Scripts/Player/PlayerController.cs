@@ -1818,16 +1818,11 @@ public class PlayerController : MonoBehaviour {
 *       boxes também estiverem nessa layer funcione
 *       
 *   -Quando o Crack shoot é usado muito proximo o personagem colide com o outro e perde toda a velocidade em X
-*       
-*   -Existem alguns ataques que não estão alterando o status de atacando corretamente
-*       Power Wave
-*       Round Wave 
-*       Power Geyser
 *   
 *   -no especial Buster Wolf as vezes o personagem muda para a ação 730 mais fica executando a animação crouched idle - aparementemente resolvido linha 495
 *   
 *    -O buster wolf pode pegar e passar direto pelo oponente e deixar ele bugado parado
-*   -o especial Buster Wolf pode passar por dentro do oponente (pegando ou não)
+*    -o especial Buster Wolf pode passar por dentro do oponente (pegando ou não)
 *
 *   -A camera não se comporta corretamente durante o Burning Knuckle (talvez também nos outros ataques em que o personagem se move)
 *   -Buster Wolf tbm

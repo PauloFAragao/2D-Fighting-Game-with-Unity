@@ -7,9 +7,10 @@ public class Damageable : MonoBehaviour
     //referencias
     [SerializeField] private PlayerController pController;    //referencia ao TerryController do proprio personagem
     [SerializeField] private Rigidbody2D rb;                  //referencia do Rigidbody2D
+    [SerializeField] private HealthSystem healthSystem;       //referencia ao healthSystem
 
     //variaveis de indicação
-    [SerializeField] private int maxLifePoints; //quantidade inicial de pontos de vida do personagem
+    //[SerializeField] private int maxLifePoints; //quantidade inicial de pontos de vida do personagem
     private int maxDefencePoints;               //quantidade inicial de pontos de escudo do personagem
 
     private bool inCombo;                        //indica que o personagem sofreu dano enquanto estava em hitStun
@@ -21,13 +22,13 @@ public class Damageable : MonoBehaviour
     private bool nextAnimationControl;          //variavel que vai indicar qual a proxima animação deve ser executada - reseta animação
 
     //variaveis de estado
-    private int currentLifePoints;              //quantidade de pontos de vida atual do personagem
+    //private int currentLifePoints;              //quantidade de pontos de vida atual do personagem
     private int currentDefencePoints;           //quantidade de pontos de escudo atual do personagem
     private int stunPoints;                     //quantidade de pontos de stun atual do personagem
 
     private void Start()
     {
-        currentLifePoints = maxLifePoints;
+        //currentLifePoints = maxLifePoints;
         currentDefencePoints = maxDefencePoints;
         stunPoints = 100;
     }
@@ -81,7 +82,18 @@ public class Damageable : MonoBehaviour
         {
             Debug.Log("Contador de combo: " + combo + " Dano do combo: " + comboDamage);
         }
+
+//GATO PARA DAR DANO
+        //se está se defendendo
+        if(pController.GetAction() == 110 || pController.GetAction() == 111 || pController.GetAction() == 112 ||
+           pController.GetAction() == 120 || pController.GetAction() == 121 || pController.GetAction() == 122 )
+            healthSystem.ShieldDamage(damageAmount);
         
+        //se não está se defendendo
+        else 
+            healthSystem.Damage(damageAmount);
+        
+
         switch (action)//switch das ações de dano que o personagem vai sofrer
         {
             case 1://golpe baixo
@@ -370,16 +382,6 @@ public class Damageable : MonoBehaviour
         {
             rb.AddForce(new Vector2(strong, 0), ForceMode2D.Impulse);
         }
-    }
-
-    //método que vai ser chamado para causar dano ao player
-    private void Damage(int damageAmount)
-    {
-        if (currentLifePoints - damageAmount > 0)
-        {
-            currentLifePoints -= damageAmount;
-        }
-        else currentLifePoints = 0;
     }
 
     //método que vai ser chamado para causar dano a defesa do player

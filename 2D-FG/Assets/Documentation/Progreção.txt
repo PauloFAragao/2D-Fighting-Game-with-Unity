@@ -5,6 +5,11 @@ Versão: 0.6
 -Comportamento da camera implementado sem usar o cinemachine
 -Implementado o attackControl do player2
 -Implementado um pull de spells para evitar mais de uma magia ativa ao mesmo tempo
+-Implementado um sistema quebra galho para calcular dano na vida e no escudo do outro personagem
+-Implementação da interface
+	-Barra de vida dos personagens 
+	-Barra de escudo dos personagens
+	
 
 -Correção de bugs
 	-Corrigido um bug no efeito de poeira e no efeito de pancada no chão que instanciavam na posição errada no eixo Y

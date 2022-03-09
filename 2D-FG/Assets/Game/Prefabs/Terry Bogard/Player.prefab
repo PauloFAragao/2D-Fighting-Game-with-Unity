@@ -513,6 +513,7 @@ GameObject:
   - component: {fileID: 7283397299566946330}
   - component: {fileID: 4432341955992311661}
   - component: {fileID: 4432341955992311662}
+  - component: {fileID: 6121420902915767538}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player1
@@ -659,6 +660,17 @@ MonoBehaviour:
   roundWaveVelocity: 15
   weakBurningKnuckleVelocity: 20
   strongBurningKnuckleVelocity: 22
+  weakCrackShootVelocity: 15
+  strongCrackShootVelocity: 17
+  weakCrackShootImpulse: 25
+  strongCrackShootImpulse: 30
+  powerDunkVelocity: 10
+  weakPowerDunkImpulse: 35
+  strongPowerDunkImpulse: 40
+  risingTackleHorizontalVelocity: 4
+  weakRisingTackleVerticalVelocity: 18
+  strongRisingTackleVerticalVelocity: 23
+  busterWolfVelocity: 30
 --- !u!114 &4432341955992311661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,7 +685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pController: {fileID: 4432341956873456524}
   rb: {fileID: 4432341956873456515}
-  maxLifePoints: 1000
+  healthSystem: {fileID: 6121420902915767538}
 --- !u!114 &4432341955992311662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,6 +702,19 @@ MonoBehaviour:
   hitEffectPrefab: {fileID: 6795232661114117624, guid: fccd9730c9b168a4597614896ef4cd93, type: 3}
   hitEffectSpaw: {fileID: 1492426523}
   Mc: {fileID: 0}
+--- !u!114 &6121420902915767538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432341956873456521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cce2f30b010ef34aabd834fee0650c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthAmountMax: 1000
 --- !u!1 &4432341957221425936
 GameObject:
   m_ObjectHideFlags: 0

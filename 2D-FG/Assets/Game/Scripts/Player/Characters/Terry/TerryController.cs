@@ -5,25 +5,40 @@ using UnityEngine;
 public class TerryController : GenericCharacter
 {
 //referencias
-    private PlayerController terry;                             //referencia a classe PlayerController do personagem
-    private InputController inputController;                    //referencia ao InputController do personagem
-    private AttackControl attackControl;                        //referencia ao AttackControl do personagem
-    private Rigidbody2D rb;                                     //referencia ao Rigidbody2D do personagem
+    private PlayerController terry;                                 //referencia a classe PlayerController do personagem
+    private InputController inputController;                        //referencia ao InputController do personagem
+    private AttackControl attackControl;                            //referencia ao AttackControl do personagem
+    private Rigidbody2D rb;                                         //referencia ao Rigidbody2D do personagem
 
-    private PlayerController opponent;                          //referencia a classe PlayerController do oponente
-    private Damageable oDamageable;                             //referencia a classe Damageable do oponente
-    public Transform EffectSpawner;                             //referencia para o transform que vai ser usado como ponto de spawn do prefab
+    private PlayerController opponent;                              //referencia a classe PlayerController do oponente
+    private Damageable oDamageable;                                 //referencia a classe Damageable do oponente
+    public Transform EffectSpawner;                                 //referencia para o transform que vai ser usado como ponto de spawn do prefab
     
     //prefabs
-    [SerializeField] private TerrySpellPool terrySpellPool;     //referencia para o poll de spells
+    [SerializeField] private TerrySpellPool terrySpellPool;         //referencia para o poll de spells
 
-    public GameObject EspecialEffectPrefab;                     //prefab do efeito de especial
+    public GameObject EspecialEffectPrefab;                         //prefab do efeito de especial
 
     //variaveis de controle
-    [SerializeField] private float roundWaveVelocity;           //velocidade de movimento durante o round wave
+    [SerializeField] private float roundWaveVelocity;               //velocidade de movimento durante o round wave
 
-    [SerializeField] private float weakBurningKnuckleVelocity;   //velocidade de movimento durante o Burning Knuckle com soco fraco
-    [SerializeField] private float strongBurningKnuckleVelocity; //velocidade de movimento durante o Burning Knuckle com soco forte
+    [SerializeField] private float weakBurningKnuckleVelocity;      //velocidade de movimento durante o Burning Knuckle com soco fraco
+    [SerializeField] private float strongBurningKnuckleVelocity;    //velocidade de movimento durante o Burning Knuckle com soco forte
+
+    [SerializeField] private float weakCrackShootVelocity;          //velocidade de movimento durante o crack shoot fraco
+    [SerializeField] private float strongCrackShootVelocity;        //velocidade de movimento durante o crack shoot fraco
+    [SerializeField] private float weakCrackShootImpulse;           //impulso do crack Shoot fraco
+    [SerializeField] private float strongCrackShootImpulse;         //impulso do crack Shoot forte
+
+    [SerializeField] private float powerDunkVelocity;               //velocidade de movimento durante o power Dunk
+    [SerializeField] private float weakPowerDunkImpulse;            //impulso do power dunk fraco
+    [SerializeField] private float strongPowerDunkImpulse;          //impulso do power dunk forte
+
+    [SerializeField] private float risingTackleHorizontalVelocity;  //velocidade de movimendo na horizontal durante o rising tackle
+    [SerializeField] private float weakRisingTackleVerticalVelocity;//velocidade de movimento na vertical durante o rising tackle fraco
+    [SerializeField] private float strongRisingTackleVerticalVelocity;//velocidade de movimento na vertical durante o rising tackle forte
+
+    [SerializeField] private float busterWolfVelocity;              //velocidade de movimento durante o buster wolf
 
     private void Awake()
     {
@@ -600,10 +615,10 @@ public class TerryController : GenericCharacter
         if (terry.GetAction() == 640)
         {
             if (terry.GetFacingRight())
-                rb.AddForce(new Vector2(15, 25), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(weakCrackShootVelocity, weakCrackShootImpulse), ForceMode2D.Impulse);
 
             else
-                rb.AddForce(new Vector2(-15, 25), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(weakCrackShootVelocity * -1, weakCrackShootImpulse), ForceMode2D.Impulse);
 
             terry.SetAction(641);
             terry.SetAnimation("Crack Shoot");
@@ -611,10 +626,10 @@ public class TerryController : GenericCharacter
         else if (terry.GetAction() == 650)
         {
             if (terry.GetFacingRight())
-                rb.AddForce(new Vector2(17, 30), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(strongCrackShootVelocity, strongCrackShootImpulse), ForceMode2D.Impulse);
 
             else
-                rb.AddForce(new Vector2(-17, 30), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(strongCrackShootVelocity * -1, strongCrackShootImpulse), ForceMode2D.Impulse);
 
             terry.SetAction(651);
             terry.SetAnimation("Crack Shoot");
@@ -644,10 +659,10 @@ public class TerryController : GenericCharacter
         if (terry.GetAction() == 660)
         {
             if (terry.GetFacingRight())
-                rb.AddForce(new Vector2(10, 35), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(powerDunkVelocity, weakPowerDunkImpulse), ForceMode2D.Impulse);
 
             else
-                rb.AddForce(new Vector2(-10, 35), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(powerDunkVelocity * -1, weakPowerDunkImpulse), ForceMode2D.Impulse);
 
             terry.SetAction(661);
             terry.SetAnimation("Power Dunk Jumping");
@@ -655,15 +670,14 @@ public class TerryController : GenericCharacter
         else if (terry.GetAction() == 670)
         {
             if (terry.GetFacingRight())
-                rb.AddForce(new Vector2(10, 40), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(powerDunkVelocity, strongPowerDunkImpulse), ForceMode2D.Impulse);
 
             else
-                rb.AddForce(new Vector2(-10, 40), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(powerDunkVelocity * -1, strongPowerDunkImpulse), ForceMode2D.Impulse);
 
             terry.SetAction(671);
             terry.SetAnimation("Power Dunk Jumping");
         }
-        //AjustPosition(2f);
     }
 
     //método que vai processar o power dunk Jumping - 661/671
@@ -718,10 +732,10 @@ public class TerryController : GenericCharacter
     public void RisingTackleStart()
     {
         if (terry.GetFacingRight())
-            rb.AddForce(new Vector2(4, 0), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(risingTackleHorizontalVelocity, 0), ForceMode2D.Impulse);
 
         else
-            rb.AddForce(new Vector2(-4, 0), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(risingTackleHorizontalVelocity*-1, 0), ForceMode2D.Impulse);
 
         if (terry.GetAction() == 700)
         {
@@ -739,10 +753,10 @@ public class TerryController : GenericCharacter
     private void ProcessRisingTackle()
     {
         if (terry.GetAction() == 701)
-            rb.velocity = new Vector2(rb.velocity.x, 18);
+            rb.velocity = new Vector2(rb.velocity.x, weakRisingTackleVerticalVelocity);
 
         else if (terry.GetAction() == 711)
-            rb.velocity = new Vector2(rb.velocity.x, 23);
+            rb.velocity = new Vector2(rb.velocity.x, strongRisingTackleVerticalVelocity);
     }
 
     //método que vai processar Rising Trackle Fall - 702/712
@@ -759,9 +773,9 @@ public class TerryController : GenericCharacter
     private void ProcessBusterWolf()
     {
         if (terry.GetFacingRight())
-            rb.velocity = new Vector2(30 ,0);
+            rb.velocity = new Vector2(busterWolfVelocity ,0);
         else
-            rb.velocity = new Vector2(-30, 0);
+            rb.velocity = new Vector2(busterWolfVelocity*-1, 0);
     }
     
     //método que vai verificar qual proxima ação tomar

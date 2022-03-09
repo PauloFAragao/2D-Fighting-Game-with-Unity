@@ -12,6 +12,11 @@
 	-dust
 	-shield
 
+-Implementar dano de todos os ataques
+	-soco fraco - feito
+
+-Implementar sistema em damageable para as defesas
+
 -Implementar o efeito do hit na defesa
 
 -Terminar de implementar o sistema de empurrar e ser empurrado quando acerta o golpe

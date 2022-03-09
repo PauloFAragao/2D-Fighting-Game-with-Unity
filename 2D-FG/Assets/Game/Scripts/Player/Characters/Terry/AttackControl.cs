@@ -39,7 +39,7 @@ public class AttackControl : MonoBehaviour
             {//tipo de dano: médio - 2 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 20
 
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
-                collision.GetComponent<Damageable>().SetDamage(2, 0, 0, 20);
+                collision.GetComponent<Damageable>().SetDamage(2, 100, 0, 20);
 
                 //adicionando a quantidade de pontos de especial 
                 pController.AddEspecialConter(10);
