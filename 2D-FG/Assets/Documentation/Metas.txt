@@ -12,8 +12,9 @@
 	-dust
 	-shield
 
--Implementar dano de todos os ataques
-	-soco fraco - feito
+-Implementar o stun na classe healthSystem
+
+-Implementar dano de todos os ataques - todos os ataques causam dano mais o dano não está balanceado
 
 -Implementar sistema em damageable para as defesas
 

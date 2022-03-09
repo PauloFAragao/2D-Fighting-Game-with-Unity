@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-
+public class PlayerController : MonoBehaviour 
+{
 //objetos de referencia
     private InputController ic;
     private Rigidbody2D rb;
@@ -55,11 +55,6 @@ public class PlayerController : MonoBehaviour {
     public LayerMask groundLayer;       //guarda a layer do terreno
 
     private bool facingRight;           //indica para qual lado o personagem está virado
-
-    private int especialConter = 0;     //indica a quantidade atual de pontos de especial que o personagem tem
-
-    private bool powActived;            //indica que o pow está ativo
-    private int powActiveTime;          //indica o momento que o pow foi ativo
 
 //variaveis de comando
     private bool commandToChangeSide;   //indica que o personagem tem que mudar de lado assim que possível
@@ -1369,7 +1364,7 @@ public class PlayerController : MonoBehaviour {
 
             case 7:
 
-                oDamageable.SetDamage(8, 0, 0, 15);//gerando dano
+                oDamageable.SetDamage(8, 45, 0, 15);//gerando dano
 
 
                 if (facingRight)//verificando o lado e mudando a posição do outro personagem
@@ -1466,7 +1461,7 @@ public class PlayerController : MonoBehaviour {
                 break;
 
             case 6:
-                oDamageable.SetDamage(8, 0, 0, -15);//gerando dano
+                oDamageable.SetDamage(8, 45, 0, -15);//gerando dano
 
                 //mudando de lado
                 oPC.JustChangeSide();
@@ -1720,15 +1715,6 @@ public class PlayerController : MonoBehaviour {
         gameObject.layer = value;
     }
 
-    public int GetEspecialConter()
-    {
-        return especialConter;
-    }
-    public void AddEspecialConter(int value)
-    {
-        especialConter += value;
-    }
-
     public void SetAnimation(string name)
     {
         anim.Play(name);
@@ -1829,5 +1815,7 @@ public class PlayerController : MonoBehaviour {
 *       -Por que o personagem se movimenta via animação não via Rigidbody.velocity
 *
 *   -se o Dash back for usado muito perto do fim do cenario a camera vai para fora do cenario e depois volta
+*
+*   -as vezes quando usa um golpe de comando ele conta ganho de power mais não é executado
 *   
 */

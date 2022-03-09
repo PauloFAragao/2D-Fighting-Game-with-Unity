@@ -9,6 +9,7 @@ public class TerryController : GenericCharacter
     private InputController inputController;                        //referencia ao InputController do personagem
     private AttackControl attackControl;                            //referencia ao AttackControl do personagem
     private Rigidbody2D rb;                                         //referencia ao Rigidbody2D do personagem
+    private PowerSystem powerSystem;                                //referencia ao powerSystem do personagem
 
     private PlayerController opponent;                              //referencia a classe PlayerController do oponente
     private Damageable oDamageable;                                 //referencia a classe Damageable do oponente
@@ -47,6 +48,7 @@ public class TerryController : GenericCharacter
         inputController = GetComponent<InputController>();
         attackControl = GetComponentInChildren<AttackControl>();
         rb = GetComponent<Rigidbody2D>();
+        powerSystem = GetComponent<PowerSystem>();
 
         if (terry.GetPlayer1())
         {
@@ -854,8 +856,11 @@ public class TerryController : GenericCharacter
                 SetAvoidAttackLoop(true);
 
                 //verificar power geyser
-                if(CheckIfCanSwitchTo720(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand5(4))
+                if(powerSystem.GetCurrentPower()>100 && CheckIfCanSwitchTo720(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand5(4))
                 {
+                    //tirando power
+                    powerSystem.SetPower(-100);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -868,6 +873,9 @@ public class TerryController : GenericCharacter
                 //verificar Power Wave
                 if (CheckIfCanSwitchTo620(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand1(4))
                 {
+                    //dando poder por ter usando o comando
+                    powerSystem.SetPower(25);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -880,6 +888,9 @@ public class TerryController : GenericCharacter
                 //Burning Knuckle
                 if (CheckIfCanSwitchTo680(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand2(4))
                 {
+                    //dando poder por ter usando o comando
+                    powerSystem.SetPower(25);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -892,6 +903,9 @@ public class TerryController : GenericCharacter
                 //verificar Rising Tackle
                 if (CheckIfCanSwitchTo700(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand4(4))
                 {
+                    //dando poder por ter usando o comando
+                    powerSystem.SetPower(25);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -968,8 +982,11 @@ public class TerryController : GenericCharacter
                 SetAvoidAttackLoop(true);
 
                 //verificar power geyser
-                if (CheckIfCanSwitchTo720(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand5(5))
+                if (powerSystem.GetCurrentPower()>100 && CheckIfCanSwitchTo720(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand5(5))
                 {
+                    //tirando power
+                    powerSystem.SetPower(-100);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -982,6 +999,9 @@ public class TerryController : GenericCharacter
                 //verificar Round Wave
                 if (CheckIfCanSwitchTo630(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand1(5))
                 {
+                    //dando poder por ter usando o comando
+                    powerSystem.SetPower(25);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -994,6 +1014,9 @@ public class TerryController : GenericCharacter
                 //verificar Rising Tackle
                 if (CheckIfCanSwitchTo710(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand4(5))
                 {
+                    //dando poder por ter usando o comando
+                    powerSystem.SetPower(25);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -1006,6 +1029,9 @@ public class TerryController : GenericCharacter
                 //Burning Knuckle
                 if (CheckIfCanSwitchTo690(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand2(5))
                 {
+                    //dando poder por ter usando o comando
+                    powerSystem.SetPower(25);
+
                     terry.SetAction(690);
                     terry.SetAnimation("Strong Burning Knuckle");
 
@@ -1142,8 +1168,11 @@ public class TerryController : GenericCharacter
                 SetAvoidAttackLoop(true);
                 
                 //verificar Buster Wolf
-                if (CheckIfCanSwitchTo730(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand6(6))
+                if (powerSystem.GetCurrentPower()>100 && CheckIfCanSwitchTo730(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand6(6))
                 {
+                    //tirando power
+                    powerSystem.SetPower(-100);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -1156,6 +1185,9 @@ public class TerryController : GenericCharacter
                 //verificar Crack Shoot
                 if (CheckIfCanSwitchTo640(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand2(6))
                 {
+                    //dando poder por ter usando o comando
+                    powerSystem.SetPower(25);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -1168,6 +1200,9 @@ public class TerryController : GenericCharacter
                 //verificar power dunk 
                 if (CheckIfCanSwitchTo660(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand3(6))
                 {
+                    //dando poder por ter usando o comando
+                    powerSystem.SetPower(25);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -1236,8 +1271,11 @@ public class TerryController : GenericCharacter
                 SetAvoidAttackLoop(true);
 
                 //verificar Buster Wolf
-                if (CheckIfCanSwitchTo730(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand6(7))
+                if (powerSystem.GetCurrentPower()>100 && CheckIfCanSwitchTo730(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand6(7))
                 {
+                    //tirando power
+                    powerSystem.SetPower(-100);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -1250,6 +1288,9 @@ public class TerryController : GenericCharacter
                 //verificar Crack Shoot
                 if (CheckIfCanSwitchTo650(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand2(7))
                 {
+                    //dando poder por ter usando o comando
+                    powerSystem.SetPower(25);
+
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 
@@ -1262,6 +1303,9 @@ public class TerryController : GenericCharacter
                 //verificar power dunk 
                 if (CheckIfCanSwitchTo670(terry.GetAction(), terry.GetCanCancelAction()) && CheckCommand3(7))
                 {
+                    //dando poder por ter usando o comando
+                    powerSystem.SetPower(25);
+                    
                     //zerando a velocidade do personagem
                     rb.velocity = Vector2.zero;
 

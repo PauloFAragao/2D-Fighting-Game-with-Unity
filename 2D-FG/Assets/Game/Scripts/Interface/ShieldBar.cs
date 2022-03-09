@@ -67,7 +67,7 @@ public class ShieldBar : MonoBehaviour
     {
         if( healthSystem.GetShieldAmount() < healthSystem.GetShieldAmountMax() )
         {
-            healthSystem.RecoverShield(5);
+            healthSystem.RecoverShield(1);
         }
     }
 

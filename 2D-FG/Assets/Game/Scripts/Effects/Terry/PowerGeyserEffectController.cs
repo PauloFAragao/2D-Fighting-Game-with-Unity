@@ -13,6 +13,6 @@ public class PowerGeyserEffectController : SpellEffectController
     public override void DoDamage(Collider2D collision)
     {
         //tipo de dano: médio - 2 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 0
-        collision.GetComponentInChildren<Damageable>().SetDamage(7, 0, 0, 5);
+        collision.GetComponentInChildren<Damageable>().SetDamage(7, 100, 0, 5);
     }
 }

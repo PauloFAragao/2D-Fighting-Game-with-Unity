@@ -8,30 +8,15 @@ public class Damageable : MonoBehaviour
     [SerializeField] private PlayerController pController;    //referencia ao TerryController do proprio personagem
     [SerializeField] private Rigidbody2D rb;                  //referencia do Rigidbody2D
     [SerializeField] private HealthSystem healthSystem;       //referencia ao healthSystem
+    [SerializeField] private PowerSystem powerSystem;           //referencia ao powersystem
 
     //variaveis de indicação
-    //[SerializeField] private int maxLifePoints; //quantidade inicial de pontos de vida do personagem
-    private int maxDefencePoints;               //quantidade inicial de pontos de escudo do personagem
-
     private bool inCombo;                        //indica que o personagem sofreu dano enquanto estava em hitStun
     private int combo;                           //indica a quantidade de hits que o personagem sofreu no combo
     private int comboDamage;                     //indica a quantidade de dano que o personagem recebeu do combo
 
     //variaveis de controle
-
     private bool nextAnimationControl;          //variavel que vai indicar qual a proxima animação deve ser executada - reseta animação
-
-    //variaveis de estado
-    //private int currentLifePoints;              //quantidade de pontos de vida atual do personagem
-    private int currentDefencePoints;           //quantidade de pontos de escudo atual do personagem
-    private int stunPoints;                     //quantidade de pontos de stun atual do personagem
-
-    private void Start()
-    {
-        //currentLifePoints = maxLifePoints;
-        currentDefencePoints = maxDefencePoints;
-        stunPoints = 100;
-    }
 
     private void Update()
     {
@@ -93,7 +78,6 @@ public class Damageable : MonoBehaviour
         else 
             healthSystem.Damage(damageAmount);
         
-
         switch (action)//switch das ações de dano que o personagem vai sofrer
         {
             case 1://golpe baixo
@@ -366,8 +350,8 @@ public class Damageable : MonoBehaviour
         //chamando o método que vai empurrar o personagem
         PushEffect(strong);
 
-        //chamando o método que vai calcular o stun
-        StunEffect(stun);
+        //adicionando a quantidade de pontos de especial
+        powerSystem.SetPower(15);
         
     }
 
@@ -382,48 +366,6 @@ public class Damageable : MonoBehaviour
         {
             rb.AddForce(new Vector2(strong, 0), ForceMode2D.Impulse);
         }
-    }
-
-    //método que vai ser chamado para causar dano a defesa do player
-    private void DamageOnDefence(int damageAmount)
-    {
-        if (currentDefencePoints - damageAmount > 0)
-        {
-            currentDefencePoints -= damageAmount;
-        }
-        else
-        {
-            currentDefencePoints = 0;
-
-            //chamar a ação de quebrar defesa
-
-        }
-    }
-
-    //método que vai ser chamado para gerar stun no player
-    private void StunEffect(int stun)
-    {
-        if (stunPoints - stun > 0)
-        {
-            stunPoints -= stun;
-        }
-        else
-        {
-            stunPoints = 0;
-            pController.SetStumCommand(true);
-        }
-    }
-
-    //método que vai regenerar os pontos de defesa do player
-    private void DefenceRegeneration()
-    {
-
-    }
-
-    //método que vai regenerar os pontos de stun do player
-    private void StunRegeneration()
-    {
-
     }
 
 }

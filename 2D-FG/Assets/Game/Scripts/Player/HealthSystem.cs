@@ -27,7 +27,7 @@ public class HealthSystem : MonoBehaviour
         healthAmount = healthAmountMax;
 
         //indicando o valor dos pontos de escudo maximo
-        shieldAmountMax = healthAmountMax / 2;
+        shieldAmountMax = healthAmountMax;
 
         //inicialisando o valor dos pontos de escudo
         shieldAmount = shieldAmountMax;
