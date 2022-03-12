@@ -12,7 +12,6 @@ public class HealthSystem : MonoBehaviour
     public event EventHandler OnShieldRecover;          //evento para quando o escudo é recuperado
 
     //variaveis de indicação
-    
     [SerializeField] private int healthAmountMax;       //quantidade de pontos de vida maxima
     private int shieldAmountMax;                        //quantidade de pontos de escudo maximo
 

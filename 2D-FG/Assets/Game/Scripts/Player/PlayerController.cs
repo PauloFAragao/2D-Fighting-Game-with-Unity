@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private AttackControl attackControl;
+    private PowerSystem powerSystem;
 
     private GenericCharacter characterController;       //objeto da classe que vai fazer os processamentos específicos do personagem
 
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         attackControl = GetComponent<AttackControl>();
+        powerSystem = GetComponent<PowerSystem>();
 
         //pegando referencia do outro personagem
         if (player1)
@@ -448,10 +450,16 @@ public class PlayerController : MonoBehaviour
     public bool ActivePow()
     {
         //soco forte + chute fraco
-        if ( ic.GetButtons(5) && ic.GetButtons(6) )
+        if ( ic.GetButtons(5) && ic.GetButtons(6) && powerSystem.GetCurrentPower() >= 100 && powerSystem.GetPowTime() <= 0 )
         {
             SetAction(170);
             anim.Play("Recover");
+
+            //tirando poder
+            powerSystem.SetPower(-100);
+
+            //ativando a barra de pow
+            powerSystem.StartPow();
 
             return true;
         }

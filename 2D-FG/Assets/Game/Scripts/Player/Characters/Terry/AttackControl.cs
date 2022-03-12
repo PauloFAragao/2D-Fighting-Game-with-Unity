@@ -244,6 +244,15 @@ public class AttackControl : MonoBehaviour
                 //adicionando a quantidade de pontos de especial
             }
 
+            else if (attackAction == 700 || attackAction == 710 )//Rising Tackle
+            {//tipo de dano: Knock Down - 0 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
+
+                //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão
+                collision.GetComponent<Damageable>().SetDamage(0, 30, 0, 0);
+
+                //adicionando a quantidade de pontos de especial
+            }
+
             else if(attackAction == 731)//buster wolf
             {//tipo de dano:Hard Knock Down Static - 9 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / força de empurrar do golpe: 25
                 //Chamando o método do outro personagem e passando: tipo do ataque, quantidade de dano, quantidade de stun, força do empurrão

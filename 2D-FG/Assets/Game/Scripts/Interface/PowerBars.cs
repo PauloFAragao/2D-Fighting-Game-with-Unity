@@ -5,15 +5,15 @@ using UnityEngine;
 public class PowerBars : MonoBehaviour
 {
     //referencias
-    [SerializeField] PowerSystem powerSystem;
+    [SerializeField] PowerSystem powerSystem;           //referencia ao powerSystem
 
-    [SerializeField] private GameObject powerBar1;              //power bar 1
-    [SerializeField] private GameObject powerBar2;              //power bar 2
-    [SerializeField] private GameObject powerBar3;              //power bar 3
+    [SerializeField] private GameObject powerBar1;      //power bar 1
+    [SerializeField] private GameObject powerBar2;      //power bar 2
+    [SerializeField] private GameObject powerBar3;      //power bar 3
 
-    [SerializeField] private GameObject powerBarFull1;          //power bar full 1
-    [SerializeField] private GameObject powerBarFull2;          //power bar full 2
-    [SerializeField] private GameObject powerBarFull3;          //power bar full 3
+    [SerializeField] private GameObject powerBarFull1;  //power bar full 1
+    [SerializeField] private GameObject powerBarFull2;  //power bar full 2
+    [SerializeField] private GameObject powerBarFull3;  //power bar full 3
 
     //variaveis de indicação
     private float size = 140, minPos = 1090;//-1090 -950
