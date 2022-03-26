@@ -10,6 +10,10 @@ public class Damageable : MonoBehaviour
     [SerializeField] private HealthSystem healthSystem;       //referencia ao healthSystem
     [SerializeField] private PowerSystem powerSystem;           //referencia ao powersystem
 
+    public Transform effectSpawn;                //referencia ao ponto de spawn
+
+    public GameObject shieldEffectPrefab;        //referencia ao prefab do efeito do dano na defesa
+
     //variaveis de indicação
     private bool inCombo;                        //indica que o personagem sofreu dano enquanto estava em hitStun
     private int combo;                           //indica a quantidade de hits que o personagem sofreu no combo
@@ -21,7 +25,7 @@ public class Damageable : MonoBehaviour
     private void Update()
     {
         //reseta o combo
-        if(inCombo && pController.GetAction() < 900)
+        if (inCombo && pController.GetAction() < 900)
         {
             inCombo = false;
         }
@@ -30,19 +34,6 @@ public class Damageable : MonoBehaviour
     //método que vai recever o tipo de ataque sofrido e processar o que deve acontecer
     public void SetDamage(int action, int damageAmount, int stun, int strong)
     {
-        //verificar se o ataque teve efeito 
-            //-caso 1: o personagem está se defendendo e não sofreu dano
-            //subitrair da defesa atual o dano causado
-            //mudar a ação para onhit na defesa - block stun
-
-        //-caso 2: o personagem não está se defendendo e sofreu dano
-            //subitrair da vida atual o dano causado
-            //mudar para a ação de sofrer dano correspondente - hit stun
-            //subtrair do contador de stun atual os pontos de stun causados
-
-        //-em todos os casos
-        //adicionar ao contador de pontos de especial (x pontos ao sofrer dano e y pontos ao defender)
-
 
         //controle do combo sofrido
         if (pController.GetAction() >= 900 && pController.GetAction() != 990 && pController.GetAction() != 1000)//os casos 990 e 1000 devem ser ignorados para evitar bug
@@ -50,7 +41,7 @@ public class Damageable : MonoBehaviour
             inCombo = true;//sinalisa que o personagem está sofrendo combo
             combo++;//soma o contador de combo
 
-            //implementar mecanica de dano reduzido em combo longo
+            //implementar mecanica de dano reduzido em combo longo<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
             comboDamage += damageAmount;//soma o dano no contador de combo
 
@@ -68,20 +59,21 @@ public class Damageable : MonoBehaviour
             Debug.Log("Contador de combo: " + combo + " Dano do combo: " + comboDamage);
         }
 
-//GATO PARA DAR DANO
+        //GATO PARA DAR DANO
         //se está se defendendo
-        if(pController.GetAction() == 110 || pController.GetAction() == 111 || pController.GetAction() == 112 ||
-           pController.GetAction() == 120 || pController.GetAction() == 121 || pController.GetAction() == 122 )
+        if (pController.GetAction() == 110 || pController.GetAction() == 111 || pController.GetAction() == 112 ||
+           pController.GetAction() == 120 || pController.GetAction() == 121 || pController.GetAction() == 122)
             healthSystem.ShieldDamage(damageAmount);
-        
+
         //se não está se defendendo
-        else 
+        else
             healthSystem.Damage(damageAmount);
-        
+
         switch (action)//switch das ações de dano que o personagem vai sofrer
         {
-            case 1://golpe baixo
-                
+            case 1://golpe baixo 
+            //regras de defesa: defesa em pé: dano / defesa agachado: defende
+
                 //enquanto está pulando
                 if (!pController.GetGrounded())
                 {
@@ -97,7 +89,7 @@ public class Damageable : MonoBehaviour
                     nextAnimationControl = !nextAnimationControl;
                 }
 
-                //enquanto está agachado
+                //enquanto está agachado e não está defendendo
                 else if (pController.GetAction() == 10 || pController.GetAction() == 11 || pController.GetAction() == 340 ||
                         pController.GetAction() == 341 || pController.GetAction() == 350 || pController.GetAction() == 351 ||
                         pController.GetAction() == 360 || pController.GetAction() == 361 || pController.GetAction() == 370 ||
@@ -109,6 +101,21 @@ public class Damageable : MonoBehaviour
                     else pController.SetAnimation("Taking Damage Crouched 2");
 
                     nextAnimationControl = !nextAnimationControl;
+                }
+
+                //enquanto está agachado e está defendendo
+                else if (pController.GetAction() == 120 || pController.GetAction() == 121 || 
+                         pController.GetAction() == 122 || pController.GetAction() == 123)
+                {
+                    pController.SetAction(122);
+
+                    if (nextAnimationControl) pController.SetAnimation("DTakingHitCrouched");
+                    else pController.SetAnimation("DTakingHitCrouched 2");
+
+                    nextAnimationControl = !nextAnimationControl;
+
+                    //instanciando o efeito de defesa
+                    InstantiateDefenceEffect();
                 }
 
                 //em pé
@@ -125,7 +132,8 @@ public class Damageable : MonoBehaviour
                 break;
 
             case 2://golpe médio
-                
+            //regras de defesa: defesa em pé: defende / defesa agachado: defende
+
                 //enquanto está pulando
                 if (!pController.GetGrounded())
                 {
@@ -142,7 +150,7 @@ public class Damageable : MonoBehaviour
                 }
 
                 //enquanto está agachado
-                else if(pController.GetAction() == 10 || pController.GetAction() == 11 || pController.GetAction() == 340 ||
+                else if (pController.GetAction() == 10 || pController.GetAction() == 11 || pController.GetAction() == 340 ||
                         pController.GetAction() == 341 || pController.GetAction() == 350 || pController.GetAction() == 351 ||
                         pController.GetAction() == 360 || pController.GetAction() == 361 || pController.GetAction() == 370 ||
                         pController.GetAction() == 371 || pController.GetAction() == 970)
@@ -153,6 +161,36 @@ public class Damageable : MonoBehaviour
                     else pController.SetAnimation("Taking Damage Crouched 2");
 
                     nextAnimationControl = !nextAnimationControl;
+                }
+
+                //enquanto está agachado e está defendendo
+                else if (pController.GetAction() == 120 || pController.GetAction() == 121 || 
+                         pController.GetAction() == 122 || pController.GetAction() == 123)
+                {
+                    pController.SetAction(122);
+
+                    if (nextAnimationControl) pController.SetAnimation("DTakingHitCrouched");
+                    else pController.SetAnimation("DTakingHitCrouched 2");
+
+                    nextAnimationControl = !nextAnimationControl;
+
+                    //instanciando o efeito de defesa
+                    InstantiateDefenceEffect();
+                }
+
+                //enquanto está se defendendo em pé
+                else if(pController.GetAction() == 110 || pController.GetAction() == 111 || 
+                        pController.GetAction() == 112 || pController.GetAction() == 113)
+                {
+                    pController.SetAction(112);
+
+                    if (nextAnimationControl) pController.SetAnimation("DTakingHit");
+                    else pController.SetAnimation("DTakingHit 2");
+
+                    nextAnimationControl = !nextAnimationControl;
+
+                    //instanciando o efeito de defesa
+                    InstantiateDefenceEffect();
                 }
 
                 //em pé
@@ -169,6 +207,7 @@ public class Damageable : MonoBehaviour
                 break;
 
             case 3://golpe alto
+            //regras de defesa: defesa em pé: defende / defesa agachado: defende
 
                 //enquanto está pulando
                 if (!pController.GetGrounded())
@@ -197,6 +236,36 @@ public class Damageable : MonoBehaviour
                     else pController.SetAnimation("Taking Damage Crouched 2");
 
                     nextAnimationControl = !nextAnimationControl;
+                }
+
+                //enquanto está agachado e está defendendo
+                else if (pController.GetAction() == 120 || pController.GetAction() == 121 || 
+                         pController.GetAction() == 122 || pController.GetAction() == 123)
+                {
+                    pController.SetAction(122);
+
+                    if (nextAnimationControl) pController.SetAnimation("DTakingHitCrouched");
+                    else pController.SetAnimation("DTakingHitCrouched 2");
+
+                    nextAnimationControl = !nextAnimationControl;
+
+                    //instanciando o efeito de defesa
+                    InstantiateDefenceEffect();
+                }
+
+                //enquanto está se defendendo em pé
+                else if(pController.GetAction() == 110 || pController.GetAction() == 111 || 
+                        pController.GetAction() == 112 || pController.GetAction() == 113)
+                {
+                    pController.SetAction(112);
+
+                    if (nextAnimationControl) pController.SetAnimation("DTakingHit");
+                    else pController.SetAnimation("DTakingHit 2");
+
+                    nextAnimationControl = !nextAnimationControl;
+
+                    //instanciando o efeito de defesa
+                    InstantiateDefenceEffect();
                 }
 
                 //em pé
@@ -213,6 +282,7 @@ public class Damageable : MonoBehaviour
                 break;
 
             case 4://Golpe do queixo
+            //regras de defesa: defesa em pé: defende / defesa agachado: defende
 
                 //enquanto está pulando
                 if (!pController.GetGrounded())
@@ -241,6 +311,36 @@ public class Damageable : MonoBehaviour
                     else pController.SetAnimation("Taking Damage Crouched 2");
 
                     nextAnimationControl = !nextAnimationControl;
+                }
+
+                //enquanto está agachado e está defendendo
+                else if (pController.GetAction() == 120 || pController.GetAction() == 121 || 
+                         pController.GetAction() == 122 || pController.GetAction() == 123)
+                {
+                    pController.SetAction(122);
+
+                    if (nextAnimationControl) pController.SetAnimation("DTakingHitCrouched");
+                    else pController.SetAnimation("DTakingHitCrouched 2");
+
+                    nextAnimationControl = !nextAnimationControl;
+
+                    //instanciando o efeito de defesa
+                    InstantiateDefenceEffect();
+                }
+
+                //enquanto está se defendendo em pé
+                else if(pController.GetAction() == 110 || pController.GetAction() == 111 || 
+                        pController.GetAction() == 112 || pController.GetAction() == 113)
+                {
+                    pController.SetAction(112);
+
+                    if (nextAnimationControl) pController.SetAnimation("DTakingHit");
+                    else pController.SetAnimation("DTakingHit 2");
+
+                    nextAnimationControl = !nextAnimationControl;
+
+                    //instanciando o efeito de defesa
+                    InstantiateDefenceEffect();
                 }
 
                 //em pé
@@ -256,6 +356,7 @@ public class Damageable : MonoBehaviour
                 break;
 
             case 5://Golpeado por cima
+            //regras de defesa: defesa em pé: defende / defesa agachado: dano
 
                 //enquanto está pulando
                 if (!pController.GetGrounded())
@@ -276,7 +377,9 @@ public class Damageable : MonoBehaviour
                 else if (pController.GetAction() == 10 || pController.GetAction() == 11 || pController.GetAction() == 340 ||
                         pController.GetAction() == 341 || pController.GetAction() == 350 || pController.GetAction() == 351 ||
                         pController.GetAction() == 360 || pController.GetAction() == 361 || pController.GetAction() == 370 ||
-                        pController.GetAction() == 371 || pController.GetAction() == 970)
+                        pController.GetAction() == 371 || pController.GetAction() == 970 ||
+                        //casos de se defendendo agachado
+                        pController.GetAction() == 120 || pController.GetAction() == 121 || pController.GetAction() == 122 || pController.GetAction() == 123 )
                 {
                     pController.SetAction(970);
 
@@ -284,6 +387,21 @@ public class Damageable : MonoBehaviour
                     else pController.SetAnimation("Taking Damage Crouched 2");
 
                     nextAnimationControl = !nextAnimationControl;
+                }
+
+                //enquanto está se defendendo em pé
+                else if(pController.GetAction() == 110 || pController.GetAction() == 111 || 
+                        pController.GetAction() == 112 || pController.GetAction() == 113)
+                {
+                    pController.SetAction(112);
+
+                    if (nextAnimationControl) pController.SetAnimation("DTakingHit");
+                    else pController.SetAnimation("DTakingHit 2");
+
+                    nextAnimationControl = !nextAnimationControl;
+
+                    //instanciando o efeito de defesa
+                    InstantiateDefenceEffect();
                 }
 
                 //em pé
@@ -300,19 +418,21 @@ public class Damageable : MonoBehaviour
                 break;
 
             case 6://golpeado e caindo
+            //regras de defesa: sem defesa
 
                 pController.SetAction(950);
 
                 pController.SetAnimation("Knock Down Rising");
 
                 //verificando se o personagem está pulando para adicionar a força correta
-                if(!pController.GetGrounded()) rb.AddForce(new Vector2(0, 1000), ForceMode2D.Force);
+                if (!pController.GetGrounded()) rb.AddForce(new Vector2(0, 1000), ForceMode2D.Force);
 
                 else rb.AddForce(new Vector2(0, 1850), ForceMode2D.Force);
-                
+
                 break;
 
             case 7://golpeado e jogado longe
+            //regras de defesa: sem defesa
 
                 pController.SetAction(960);
 
@@ -322,10 +442,11 @@ public class Damageable : MonoBehaviour
                 if (!pController.GetGrounded()) rb.AddForce(new Vector2(0, 1000), ForceMode2D.Force);
 
                 else rb.AddForce(new Vector2(0, 2050), ForceMode2D.Force);
-                
+
                 break;
 
-            case 8:
+            case 8://jogado longe
+            //regras de defesa: sem defesa
 
                 pController.SetAction(991);
                 pController.SetAnimation("Thrown Forward Rising");
@@ -335,7 +456,8 @@ public class Damageable : MonoBehaviour
                 break;
 
             case 9://primeiro frame de Hard Knock Down
-                
+            //regras de defesa: sem defesa
+
                 pController.SetAction(962);
                 pController.SetAnimation("Hard Knock Down Static");
 
@@ -346,19 +468,19 @@ public class Damageable : MonoBehaviour
 
         //mudando o estado de acatando para falso
         pController.SetAttackingFalse();
-        
+
         //chamando o método que vai empurrar o personagem
         PushEffect(strong);
 
         //adicionando a quantidade de pontos de especial
         powerSystem.SetPower(15);
-        
+
     }
 
     //método que vai ser chamado para empurrar o personagem
     private void PushEffect(int strong)
     {
-        if(pController.GetFacingRight())
+        if (pController.GetFacingRight())
         {
             rb.AddForce(new Vector2(strong * -1, 0), ForceMode2D.Impulse);
         }
@@ -366,6 +488,11 @@ public class Damageable : MonoBehaviour
         {
             rb.AddForce(new Vector2(strong, 0), ForceMode2D.Impulse);
         }
+    }
+
+    private void InstantiateDefenceEffect()
+    {
+        Instantiate(shieldEffectPrefab, effectSpawn.position, effectSpawn.rotation);
     }
 
 }

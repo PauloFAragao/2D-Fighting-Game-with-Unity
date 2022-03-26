@@ -15,7 +15,7 @@ public class PowerSystem : MonoBehaviour
     private float powTimerMax = 4.5f;          //quantidade de tempo que o pow fica ativo
 
     //variaveis de estado
-    private int currentPower = 300;               //quantidade de power atual
+    private int currentPower = 0;               //quantidade de power atual
     private float currentPowTime;               //quantidade de tempo restante do pow
 
     private void Update()

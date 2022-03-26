@@ -730,6 +730,13 @@ public class PlayerController : MonoBehaviour
         ActionButtons();
 
         if (action != 11) return;
+
+        //defesa enquanto agachado
+        if(ic.GetButtons(2) && oAC.GetAttacking())
+        {
+            SetAction(120);
+            anim.Play("DefendingCrouched");
+        }
         
         if ( !ic.GetButtons(1) )//se o player parou de pressionar o botão para permanecer abaixado
         {
@@ -1212,14 +1219,52 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //método que vai processar a ação de sofrer dano enquanto defendendo em pé - 112
+    public void ProcessDTakingHit()
+    {
+        if((facingRight && ic.GetButtons(0)) ||   //se o personagem estiver virado para direita
+           (!facingRight && ic.GetButtons(2)))    //se o personagem estiver virado para a esquerda
+        {
+            SetAction(111);
+            anim.Play("Defence");
+        }
+
+        else if((facingRight && !ic.GetButtons(0)) ||   //se o personagem estiver virado para direita
+           (!facingRight && !ic.GetButtons(2)))         //se o personagem estiver virado para a esquerda
+        {
+            ChangeToIdle();
+        }
+    }
+
     //método que vai processar a ação defence crouched - 121
     private void ProcessDefenceCrouched()
     {
         if((facingRight && !ic.GetButtons(0)) ||   //se o personagem estiver virado para direita
-           (!facingRight && !ic.GetButtons(2)))     //se o personagem estiver virado para a esquerda
+           (!facingRight && !ic.GetButtons(2)))    //se o personagem estiver virado para a esquerda
         {
             SetAction(123);
             anim.Play("DefenceCrouchedExit");
+        }
+    }
+
+    //método que vai processar a ação de sofrer dano enquanto defendendo em pé - 122
+    public void ProcessDTakingHitCrouched()
+    {
+        if((facingRight && ic.GetButtons(0)) ||   //se o personagem estiver virado para direita
+           (!facingRight && ic.GetButtons(2)))    //se o personagem estiver virado para a esquerda
+        {
+            SetAction(121);
+            anim.Play("DefenceCrouched");
+        }
+
+        else if((facingRight && !ic.GetButtons(0)) ||   //se o personagem estiver virado para direita
+           (!facingRight && !ic.GetButtons(2)))         //se o personagem estiver virado para a esquerda
+        {
+            if(ic.GetButtons(1))//se o jogador estiver pressionando para baixo
+                ChangeToCrouchedIdle();
+
+            else 
+                ChangeToIdle();
         }
     }
     
@@ -1825,5 +1870,8 @@ public class PlayerController : MonoBehaviour
 *   -se o Dash back for usado muito perto do fim do cenario a camera vai para fora do cenario e depois volta
 *
 *   -as vezes quando usa um golpe de comando ele conta ganho de power mais não é executado
+*
+*   -o efeito do dano na defesa spawna no lugar errado 
+*       ele spawna no ponto de spawn da animação anterior, vai ser necessário spawnar ele em uma posição fixa para concertar isso
 *   
 */

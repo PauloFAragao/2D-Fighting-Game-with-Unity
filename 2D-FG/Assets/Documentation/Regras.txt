@@ -10,7 +10,7 @@
 	
 -Tipos de ataques
 	*alto	
-	*medio	
+	*médio	
 	*baixo	
 	*banda
 	*overhead
@@ -18,11 +18,11 @@
 	
 -Tipos de defesa e vulnerabilidades
 	defesa em pé 
-		vulneravel a golpes baixos
-		forte contra golpes altos, medios e overheads
+		vulnerável a golpes baixos
+		forte contra golpes altos, médios e overheads
 	defesa agachado
-		vulneravel a overheads
-		forte contra golpes altos, medios e baixo
+		vulnerável a overheads
+		forte contra golpes altos, médios e baixo
 
 -Stum
 	A barra de stum tem x pontos e quando chegar a 0 o personagem vai ficar atordoado, 
@@ -41,14 +41,14 @@
 	-Proteção contra combo infinito
 
 -Penalidade de combo longo
-	Combos longos vão reduzir significativamente o dano causado nos proximos ataques
+	Combos longos vão reduzir significativamente o dano causado nos próximos ataques
 	
 -Reset
-	Gastar uma barra de especial para resetar a penalidade de dano redusido em combo, 
-	só vai ser possivel fazer isso uma vez durante o combo
+	Gastar uma barra de especial para resetar a penalidade de dano reduzido em combo, 
+	só vai ser possível fazer isso uma vez durante o combo
 
 -Counter
-	Acertar o oponente enquanto ele executa alumas ações vai fazer com que o proximo 
+	Acertar o oponente enquanto ele executa algumas ações vai fazer com que o proximo 
 	ataque do personagem tenha bonus igual ao do pow ativo
 
 -Counter Punish
@@ -59,5 +59,5 @@
 	Em estado de hit stun ou defence stun o jogador pode sacrificar uma barra para
 	sair desse estado 
 	(não sei se no hit stun é legal)
-	(o jogador pode fazer isso e pressionar para tras para sair do stum indo para tras)
+	(o jogador pode fazer isso e pressionar para trás para sair do stum indo para trás)
 	(para fazer o guard reset é só estourar barra enquanto estiver no defence stun)

@@ -22,14 +22,6 @@ public class AttackControl : MonoBehaviour
     //método que vai ser chamado quando o personagem atingir algo
     public void OnHit(Collider2D collision)
     {
-        //verificar se o que foi atingido foi o outro personagem - feito
-        //verificar qual ação o personagem está realizando em cada caso
-        //chamar a função que vai fazer o outro player mudar de ação e vai contabilizar o dano e o stun do outro personagem - feito
-        //chamar o efeito de hit - feito
-        //verificar se pode mover o outro personagem se não mover esse personagem para trás - parcialmente feito (vai precisar ser refeito)
-        //adicionar ao contador de pontos de especial
-        //mudar a Order In Layer para fazer o personagem que deu dano ficar na frente - feito
-
         //verificar qual é a ação que o personagem estava executando quando houve o acerto
         actionSearch();
         
