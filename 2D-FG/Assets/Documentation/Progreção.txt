@@ -10,6 +10,7 @@ Versão: 0.6
 -Implementado o sistema para as barras de poder
 -Implementado o sistema de funcionamento da barra de pow (quando estoura a barra)
 -Implementado o sistema de sofrer o ataque enquanto está se defendendo (o efeito está spawnando no lugar errado)
+-Implementado o sistema de stun
 -Implementação da interface
 	-Barra de vida dos personagens 
 	-Barra de escudo dos personagens

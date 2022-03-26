@@ -13,6 +13,6 @@ public class RoundWaveEffectController : SpellEffectController
     public override void DoDamage(Collider2D collision)
     {
         //tipo de dano: médio - 2 / quantidade de dano do golpe: x / quantidade de stun do golpe: x / for�a de empurrar do golpe: 0
-        collision.GetComponentInChildren<Damageable>().SetDamage(2, 40, 0, 25);
+        collision.GetComponentInChildren<Damageable>().SetDamage(2, 40, 12, 25);
     }
 }

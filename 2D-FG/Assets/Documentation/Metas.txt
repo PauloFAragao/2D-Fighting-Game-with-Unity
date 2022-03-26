@@ -12,15 +12,15 @@
 	-dust
 	-shield
 
--Implementar o stun na classe healthSystem
+-Implementar o stun na classe healthSystem - implementado
 
 -Implementar dano de todos os ataques - todos os ataques causam dano mais o dano não está balanceado
 
 -Implementar sistema em damageable para as defesas - feito
 
--Implementar o efeito do hit na defesa - 
+-Implementar o efeito do hit na defesa - implementado
 
--implementar a interface - falta barra de stun
+-implementar a interface - implementado
 
 -quando a defesa chegar a zero fazer o personagem ir para a ação de defesa quebrada e encher a barra de defesa
 
